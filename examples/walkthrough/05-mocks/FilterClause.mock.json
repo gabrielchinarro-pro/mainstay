@@ -1,0 +1,5 @@
+{
+  "column": "string",
+  "operator": "eq",
+  "value": "string"
+}

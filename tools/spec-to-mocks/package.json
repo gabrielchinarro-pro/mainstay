@@ -1,0 +1,17 @@
+{
+  "name": "@mainstay/spec-to-mocks",
+  "version": "0.1.0",
+  "description": "Generate TypeScript types, a typed endpoints list, and JSON mock fixtures from an OpenAPI 3 spec. The contract-first toolchain for the Mainstay method.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "spec-to-mocks": "generate.mjs"
+  },
+  "scripts": {
+    "start": "node generate.mjs",
+    "help": "node generate.mjs --help"
+  },
+  "dependencies": {
+    "yaml": "^2.4.5"
+  }
+}
