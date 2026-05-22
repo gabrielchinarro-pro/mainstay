@@ -1,0 +1,25 @@
+{
+  "name": "@mainstay/example-mcp-server",
+  "version": "0.1.0",
+  "description": "A minimal MCP server: one resource (vault index) and one tool (lookup_decision). Teaching example for the Mainstay method.",
+  "type": "module",
+  "license": "MIT",
+  "main": "dist/server.js",
+  "bin": {
+    "mainstay-example-mcp": "dist/server.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node --import tsx src/server.ts",
+    "start:built": "node dist/server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  }
+}

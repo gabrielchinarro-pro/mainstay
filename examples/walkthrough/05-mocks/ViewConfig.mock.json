@@ -1,0 +1,16 @@
+{
+  "filters": [
+    {
+      "column": "string",
+      "operator": "eq",
+      "value": "string"
+    }
+  ],
+  "sort": {
+    "column": "string",
+    "direction": "asc"
+  },
+  "visible_columns": [
+    "string"
+  ]
+}

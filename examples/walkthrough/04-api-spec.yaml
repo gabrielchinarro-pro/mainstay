@@ -1,0 +1,343 @@
+openapi: "3.0.3"
+info:
+  title: Saved Views API
+  description: >
+    Versioned API spec for the "Saved Views" feature on the data-table screen
+    `saved-views-panel`. Frozen first, before implementation, as the shared
+    technical source of truth for the contract-first build.
+  version: "1.0.0"
+servers:
+  - url: https://api.example.com
+    description: Fake host — placeholder, never a real endpoint.
+
+paths:
+  /v1/saved-views:
+    get:
+      operationId: listSavedViews
+      summary: List the saved views visible to the current user.
+      description: >
+        Returns the caller's private views plus any workspace-shared views.
+        Sorted by name, ascending.
+      responses:
+        "200":
+          description: The list of visible saved views.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SavedViewList"
+        "401":
+          description: Missing or invalid authentication.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      operationId: createSavedView
+      summary: Create a new saved view.
+      description: >
+        Creates a saved view for the current user. A newly created view is
+        never default; it is private unless `visibility` is set to `workspace`
+        (see DEC-007, DEC-011).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SavedViewCreate"
+      responses:
+        "201":
+          description: The created saved view.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SavedView"
+        "400":
+          description: Validation failed (e.g. blank or duplicate name).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing or invalid authentication.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /v1/saved-views/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The saved view identifier.
+        schema:
+          type: string
+          format: uuid
+    get:
+      operationId: getSavedView
+      summary: Retrieve a single saved view by id.
+      responses:
+        "200":
+          description: The requested saved view.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SavedView"
+        "404":
+          description: No view with that id is visible to the caller.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch:
+      operationId: updateSavedView
+      summary: Update a saved view's name, configuration, or visibility.
+      description: >
+        Only the owner may update a view. Non-owners receive 403. The
+        `is_default` field is ignored here — use the dedicated default
+        endpoint.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SavedViewCreate"
+      responses:
+        "200":
+          description: The updated saved view.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SavedView"
+        "400":
+          description: Validation failed.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: The caller is not the owner of this view.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No view with that id is visible to the caller.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      operationId: deleteSavedView
+      summary: Delete a saved view.
+      description: Only the owner may delete a view.
+      responses:
+        "204":
+          description: The view was deleted.
+        "403":
+          description: The caller is not the owner of this view.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No view with that id is visible to the caller.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /v1/saved-views/{id}/default:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The saved view identifier.
+        schema:
+          type: string
+          format: uuid
+    post:
+      operationId: setDefaultSavedView
+      summary: Mark a saved view as the caller's default.
+      description: >
+        Sets this view as the current user's default. Per DEC-007 the default
+        is a per-user preference: it never changes what other users see. Any
+        previously default view for this user is automatically unset.
+      responses:
+        "200":
+          description: The view, now marked default.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SavedView"
+        "404":
+          description: No view with that id is visible to the caller.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  schemas:
+    SavedView:
+      type: object
+      description: A named, saved combination of table filters, sort, and columns.
+      required:
+        - id
+        - name
+        - visibility
+        - is_default
+        - config
+        - owner_id
+        - created_at
+        - updated_at
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier of the saved view.
+        name:
+          type: string
+          description: Display name, 1-60 characters, unique per user.
+          example: "Open items this week"
+        visibility:
+          type: string
+          description: Whether the view is private to the owner or shared with the workspace.
+          enum:
+            - private
+            - workspace
+        is_default:
+          type: boolean
+          description: Whether this view is the current user's default (per-user, see DEC-007).
+        config:
+          $ref: "#/components/schemas/ViewConfig"
+        owner_id:
+          type: string
+          format: uuid
+          description: Identifier of the user who owns the view.
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp (ISO 8601, UTC).
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp (ISO 8601, UTC).
+
+    SavedViewCreate:
+      type: object
+      description: Payload to create or update a saved view.
+      required:
+        - name
+        - config
+      properties:
+        name:
+          type: string
+          description: Display name, 1-60 characters, unique per user.
+          example: "Open items this week"
+        visibility:
+          type: string
+          description: Optional on create; defaults to "private" (DEC-011).
+          enum:
+            - private
+            - workspace
+        config:
+          $ref: "#/components/schemas/ViewConfig"
+
+    ViewConfig:
+      type: object
+      description: The table state captured by a saved view.
+      required:
+        - filters
+        - sort
+        - visible_columns
+      properties:
+        filters:
+          type: array
+          description: Active filter clauses, applied with AND.
+          items:
+            $ref: "#/components/schemas/FilterClause"
+        sort:
+          $ref: "#/components/schemas/SortClause"
+        visible_columns:
+          type: array
+          description: Ordered list of column keys shown in the table.
+          items:
+            type: string
+
+    FilterClause:
+      type: object
+      description: A single filter applied to a table column.
+      required:
+        - column
+        - operator
+        - value
+      properties:
+        column:
+          type: string
+          description: The column key being filtered.
+        operator:
+          type: string
+          description: The comparison operator.
+          enum:
+            - eq
+            - neq
+            - contains
+            - gt
+            - lt
+        value:
+          type: string
+          description: The comparison value, serialized as a string.
+
+    SortClause:
+      type: object
+      description: The sort applied to the table.
+      required:
+        - column
+        - direction
+      properties:
+        column:
+          type: string
+          description: The column key being sorted.
+        direction:
+          type: string
+          description: Sort direction.
+          enum:
+            - asc
+            - desc
+
+    SavedViewList:
+      type: object
+      description: A page of saved views.
+      required:
+        - items
+        - total
+      properties:
+        items:
+          type: array
+          description: The saved views visible to the caller.
+          items:
+            $ref: "#/components/schemas/SavedView"
+        total:
+          type: integer
+          description: Total number of visible saved views.
+
+    Error:
+      type: object
+      description: A structured error response.
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+          description: Stable machine-readable error code.
+          enum:
+            - unauthorized
+            - forbidden
+            - not_found
+            - validation_failed
+        message:
+          type: string
+          description: Human-readable error message, safe to display.
+          example: "The request could not be completed."
