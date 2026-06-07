@@ -18,6 +18,7 @@ flowchart LR
       P6["Fixed vs conditional zones"]
       P7["Escalate, never decide alone"]
       P8["Reconcile vs live before cutover"]
+      P9["Verify via real consumer"]
     end
     subgraph A["Anti-patterns — avoid these"]
       A1["Invent to 'improve'"]
@@ -27,6 +28,7 @@ flowchart LR
       A5["Underrating the contract phase"]
       A6["Destructive regeneration"]
       A7["Deferring grey zones"]
+      A8["'Exhaustive' w/o blind spot"]
     end
 ```
 
@@ -149,6 +151,22 @@ cutover on a read-only certification check** that returns a single GO / NO-GO.
 The cutover does not happen on a green claim; it happens on green evidence
 (Pattern 5, applied to data).
 
+### Pattern 9 — Verify through the real consumer, not a convenient proxy *(extension)*
+
+**What.** When a check's result contradicts observed reality, re-run the
+verification through the *exact* client and path the real system uses — not the
+handiest tool at hand.
+
+**Why it works.** A proxy tool can fail where the real client succeeds. A `mysql`
+CLI denied a password that the application's PHP driver accepted over the same
+socket; trusting the CLI would have rolled back a change that was actually
+working. The proxy's "failure" was a false negative, not evidence.
+
+**How.** Model the verification on the actual consumer: connect the way the app
+connects, request the way a browser requests. When the proxy and reality
+disagree, the real consumer is the source of truth — and a green light from a
+proxy is not green evidence (Pattern 5).
+
 ---
 
 ## Anti-patterns
@@ -245,6 +263,24 @@ decision or a contract note — and never a third
 ([Chapter 07](./07-grey-zones.md)). The grey-zone ledger is not closed until
 every row has a resolution.
 
+### Anti-pattern 8 — Claiming "exhaustive" without naming the blind spot *(extension)*
+
+**Symptom.** Reporting full coverage — "that was the only one", "it's all clean"
+— when the method only checked the easy surface: top-level names, a list of
+guessed slugs, a single server.
+
+**Cost.** A real defect or exposure survives behind the false confidence and
+surfaces at the worst moment. An "exhaustive" sweep that checked only top-level
+files and guessed names missed **22 GB of publicly-downloadable
+customer-database dumps** — found only when a recursive content search was
+finally run.
+
+**Fix.** State the *method* and its limits alongside any coverage claim
+("grepped top-level HTML; sub-directories, other extensions, and other hosts not
+covered"). Prefer recursive content search over name-guessing. And treat a
+stakeholder's "are you sure?" as a gift that catches the gap, not a challenge to
+defend against.
+
 ---
 
 ## The catalogue as a checklist
@@ -261,12 +297,14 @@ Use this as a fast self-audit at the end of a feature.
 | Separate fixed and conditional zones in the contract? | P6 |
 | Escalate gaps instead of patching code? | P7 |
 | Reconcile against the live source (not the snapshot) before cutover? | P8 |
+| Verify through the real consumer when a check contradicts reality? | P9 |
 | Wire integration in waves, not a big bang? | A2 |
 | Keep the diff scoped to the request? | A3 |
 | Keep all sources consistent? | A4 |
 | Treat the contract as real work? | A5 |
 | Fix breakage minimally, never regenerate? | A6 |
 | Resolve every grey zone now, not later? | A7 |
+| Name the method's blind spot instead of claiming "exhaustive"? | A8 |
 
 A "no" anywhere is a known failure mode with a known fix. The catalogue exists
 so that none of them is a surprise.
