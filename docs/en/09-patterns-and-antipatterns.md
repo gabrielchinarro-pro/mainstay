@@ -17,6 +17,7 @@ flowchart LR
       P5["Short visual feedback"]
       P6["Fixed vs conditional zones"]
       P7["Escalate, never decide alone"]
+      P8["Reconcile vs live before cutover"]
     end
     subgraph A["Anti-patterns — avoid these"]
       A1["Invent to 'improve'"]
@@ -125,6 +126,28 @@ again.
 **How.** This is the escalation reflex of [Chapter 04](./04-sources-of-truth.md).
 A case in no source is a grey zone; resolve it via the two outcomes of
 [Chapter 07](./07-grey-zones.md).
+
+### Pattern 8 — Reconcile against the live source before cutover *(extension)*
+
+**What.** Before a migration or consolidation goes live, do not trust the
+migrated snapshot. Pull the real values from the live source(s), and when
+several sources disagree, resolve by a **declared priority order** — not by
+guessing, and not by averaging.
+
+**Why it works.** A snapshot taken during a migration *lies*: it carries
+placeholder values, stale fields, and silent gaps that look exactly like real
+data. Trusting it ships a state that is wrong in ways no screenshot reveals.
+Pulling from the live source turns assumption into evidence; a declared
+priority makes "who wins when sources disagree" a rule, not an improvisation.
+
+**How.** Pull the authoritative fields (`key + state + value`) from each live
+source, read-only. Match by a stable key. Resolve conflicts by the authority
+table in [Chapter 04](./04-sources-of-truth.md) — one source is the reference,
+the others fill gaps, and a source you have flagged as unreliable is *never*
+the authority. Write into the staging copy with a backup, then **gate the
+cutover on a read-only certification check** that returns a single GO / NO-GO.
+The cutover does not happen on a green claim; it happens on green evidence
+(Pattern 5, applied to data).
 
 ---
 
@@ -237,6 +260,7 @@ Use this as a fast self-audit at the end of a feature.
 | Validate against real rendered output? | P5 |
 | Separate fixed and conditional zones in the contract? | P6 |
 | Escalate gaps instead of patching code? | P7 |
+| Reconcile against the live source (not the snapshot) before cutover? | P8 |
 | Wire integration in waves, not a big bang? | A2 |
 | Keep the diff scoped to the request? | A3 |
 | Keep all sources consistent? | A4 |
