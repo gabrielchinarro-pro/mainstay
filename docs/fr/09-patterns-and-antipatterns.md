@@ -14,6 +14,7 @@ flowchart LR
       P5["Short visual feedback"]
       P6["Fixed vs conditional zones"]
       P7["Escalate, never decide alone"]
+      P8["Reconcile vs live before cutover"]
     end
     subgraph A["Anti-patterns — avoid these"]
       A1["Invent to 'improve'"]
@@ -85,6 +86,14 @@ flowchart LR
 **Pourquoi ça marche.** Cela corrige la *source* du manque, pas le symptôme. Le prochain agent et le prochain relecteur héritent d'une source complète au lieu de deviner à nouveau.
 
 **Comment.** C'est le réflexe d'escalade du [chapitre 04](./04-sources-of-truth.md). Un cas dans aucune source est une zone grise ; résolvez-la via les deux issues du [chapitre 07](./07-grey-zones.md).
+
+### Pattern 8 — Réconcilier contre la source live avant le cutover *(extension)*
+
+**Quoi.** Avant qu'une migration ou une consolidation ne passe en production, ne pas faire confiance au snapshot migré. Tirer les vraies valeurs de la (des) source(s) live, et quand plusieurs sources se contredisent, trancher par un **ordre de priorité déclaré** — pas en devinant, pas en moyennant.
+
+**Pourquoi ça marche.** Un snapshot pris pendant une migration *ment* : il porte des valeurs placeholder, des champs périmés et des trous silencieux qui ressemblent exactement à de la vraie donnée. S'y fier livre un état faux d'une manière qu'aucune capture d'écran ne révèle. Tirer de la source live transforme l'hypothèse en preuve ; une priorité déclarée fait de « qui gagne quand les sources divergent » une règle, pas une improvisation.
+
+**Comment.** Tirez les champs faisant autorité (`clé + état + valeur`) de chaque source live, en lecture seule. Matchez par une clé stable. Tranchez les conflits par la table d'autorité du [chapitre 04](./04-sources-of-truth.md) — une source est la référence, les autres comblent les trous, et une source marquée non fiable n'est *jamais* l'autorité. Écrivez dans la copie de staging avec un backup, puis **conditionnez le cutover à un contrôle de certification en lecture seule** qui renvoie un unique GO / NO-GO. Le cutover n'a pas lieu sur une affirmation verte ; il a lieu sur une preuve verte (pattern 5, appliqué à la donnée).
 
 ---
 
@@ -161,6 +170,7 @@ Utilisez ceci comme auto-audit rapide en fin de fonctionnalité.
 | Validé contre une sortie effectivement rendue ? | P5 |
 | Séparé zones fixes et conditionnelles dans le contrat ? | P6 |
 | Escaladé les manques au lieu de rapiécer le code ? | P7 |
+| Réconcilié contre la source live (pas le snapshot) avant le cutover ? | P8 |
 | Raccordé l'intégration par vagues, pas en big bang ? | A2 |
 | Gardé le diff cantonné à la demande ? | A3 |
 | Gardé toutes les sources cohérentes ? | A4 |
