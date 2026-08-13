@@ -192,4 +192,6 @@ langage et du domaine. Reprenez-la, adaptez-la, contredisez-la.*
 
 [Lire la documentation →](docs/fr/README.md) · [English →](README.md)
 
+Une méthode de [Gabriel Chinarro](https://gabrielchinarro.com).
+
 </div>

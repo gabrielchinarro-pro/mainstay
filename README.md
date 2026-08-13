@@ -186,4 +186,6 @@ language, and the domain. Take it, adapt it, contradict it.*
 
 [Read the docs →](docs/en/README.md) · [Français →](README.fr.md)
 
+A method by [Gabriel Chinarro](https://gabrielchinarro.com).
+
 </div>
