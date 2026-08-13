@@ -6,6 +6,7 @@
 
 Une méthode de livraison logicielle pilotée par agents : la mémoire, les
 contrats et les garde-fous qui tiennent debout la production d'un agent IA.
+Éprouvée sur le terrain avant d'être écrite.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -25,20 +26,35 @@ Tout le monde observe le modèle. La partie se joue ailleurs.
 Un modèle, c'est un cerveau. Un agent, c'est ce cerveau auquel on a donné des
 mains — il peut agir, et plus seulement répondre. Mais un cerveau brillant doté
 de mains, privé de mémoire et de règles, fait n'importe quoi : vite, et avec
-assurance.
+assurance. Ce qui transforme cette puissance en logiciel livré, ce n'est pas le
+cerveau. C'est tout ce que l'on bâtit autour — son infrastructure. **Mainstay
+est cette infrastructure**, décrite avec assez de détail pour la cloner.
 
-Ce qui transforme cette puissance en résultat utile, ce n'est pas le cerveau.
-C'est tout ce que l'on bâtit autour — son infrastructure. **Mainstay est cette
-infrastructure**, décrite avec assez de détail pour la cloner et l'utiliser : le
-monorepo qui ancre la connaissance dans le code, les couches qui outillent un
-agent, la chaîne qui mène du vide à la production, les protocoles qui tiennent
-quand les choses cassent, et les modèles à copier.
+Mainstay n'est pas une théorie mise en pratique ; c'est une pratique mise en
+théorie. Le protocole a été exécuté sur un lot réel avant que ce dépôt ne soit
+publié, et le canon a continué d'absorber ce que le terrain prouvait. Trois
+faits, parmi ceux que le corpus porte :
 
-La promesse n'est pas la vitesse en bâclant. C'est de livrer en quelques
-semaines ce qui en demandait trois mois — en supprimant les allers-retours, les
-zones grises et les spécifications à moitié écrites. L'agent avance vite *parce
-que rien ne lui laisse le moindre doute.* La contrainte ne le ralentit pas ;
-elle le délivre de l'hésitation.
+- Sur **un e-commerce hérité en production**, cinq jours séparent le premier
+  commit sous la méthode de la bascule de l'ensemble des boutiques du client en
+  production. Ce terrain tient depuis un registre sous la règle « aucune mise
+  en production sans entrée, aucune entrée sans mise en production » : 239
+  entrées et 193 tags de version en trois mois, avec le go humain consigné
+  jusqu'au verbatim — y compris ses deux absences, qui ont fondé la règle.
+- La discipline de preuve y a rattrapé de l'argent réel : une TVA absente sur
+  des frais de port — 146 commandes, 2 655,70 € en agrégat — corrigée avec une
+  sonde mesurant le vrai chemin de code, 44 cas vérifiés, zéro changement du
+  prix payé par le client.
+- Sur **une fintech**, trois passes de recette produit avaient rendu GO ; les
+  relecteurs adversariaux ont refusé le commit deux fois, sur quatre défauts
+  qu'aucune recette n'avait vus. La méthode ne compte pas ses findings : elle
+  les réfute.
+
+**Statut de ces preuves :** elles viennent d'un corpus privé — des faits datés,
+des compteurs obtenus par commande, vérifiés par un audit interne en trois
+passes contradictoires — et ne sont pas rejouables par le lecteur. Aucun
+chiffre invérifiable même en interne n'est publié. Le détail et les limites
+sont dans [la préface](docs/fr/00-preface.md).
 
 > Un **mainstay**, c'est l'étai qui maintient le mât d'un navire droit — et, en
 > clair, ce dont un système dépend pour rester debout.
@@ -85,11 +101,28 @@ un modèle ordinaire, livre des chantiers entiers en quelques semaines. **Votre
 
 ---
 
+## Quatre profils, une méthode
+
+La méthode est la même partout ; seule l'incarnation change. La variable qui
+commande le niveau d'outillage n'est ni la taille du code ni la durée du
+chantier : c'est **propriété du code × coût de l'erreur**. Quatre questions
+suffisent à trouver votre profil — le sélecteur complet est dans
+[la préface](docs/fr/00-preface.md).
+
+| Profil | Pour qui | Ce qui change |
+|---|---|---|
+| [S — Solo compressé](docs/fr/profiles/solo-compressed.md) | Une tête, un livrable, un cycle en jours. | Fonctions conservées, artefacts réincarnés : le vault devient un journal, la DoD une recette cochable avec preuves. |
+| [R — Run & audit](docs/fr/profiles/run-and-audit.md) | Code d'autrui, plateforme vivante, coût d'erreur élevé. | La méthode ne se compresse pas : elle se durcit. Backup horodaté avant toute écriture, go explicite au tour courant. |
+| [P — Produit en construction](docs/fr/profiles/product-build.md) | Construction écran par écran, seul ou à deux-trois. | La chaîne canonique complète : proto → zones grises → contrat figé → build → retour au vault. |
+| [E — Équipe & flotte](docs/fr/profiles/team-fleet.md) | Plusieurs signataires réels, enjeux financiers ou réglementaires. | Rien de retiré au cœur ; gates nommées, attestations, doublement adverse, séquencement de vagues en plus. |
+
+---
+
 ## Démarrage rapide
 
-Adoptez Mainstay sur un dépôt neuf en cinq étapes. Le guide complet — y compris
-comment le greffer sur une base de code existante — est dans
-[**docs/fr/10-quickstart.md**](docs/fr/10-quickstart.md).
+Adoptez Mainstay sur un dépôt neuf en cinq étapes. Le parcours de lecture court
+— la colonne vertébrale en une heure — est dans
+[**docs/fr/README.md**](docs/fr/README.md).
 
 ```bash
 # 1. Clone Mainstay for its templates, skills, and hooks
@@ -122,44 +155,24 @@ definition of done cochée.
 
 | Chemin | Ce que vous obtenez |
 |---|---|
-| [`docs/en/`](docs/en/README.md) · [`docs/fr/`](docs/fr/README.md) | 18 chapitres autonomes, en anglais et en français. |
-| [`templates/`](templates/) | Modèles copiables : fichier de contexte, prompts, contrat, décision, index de vault, registre des zones grises. |
+| [`docs/fr/`](docs/fr/README.md) · [`docs/en/`](docs/en/README.md) | Une préface, 13 chapitres de cœur, 4 profils, 6 annexes de référence — français et anglais. |
+| [`templates/`](templates/README.md) | Modèles copiables : contexte, contrat, décision, registre des MEP, handoff, prompt de reprise, gates, playbook de push, registre d'écarts. |
 | [`examples/walkthrough/`](examples/walkthrough/README.md) | Une fonctionnalité fictive, suivie du vault à la production avec chaque artefact réel. |
 | [`examples/monorepo-skeleton/`](examples/monorepo-skeleton/) | Une arborescence annotée pour un monorepo Mainstay. |
 | [`skills/`](skills/) | Skills d'exemple fonctionnels avec scripts exécutables. |
-| [`hooks/`](hooks/) | Hooks exécutables, dont le garde-fou de synchro doc/schéma. |
-| [`tools/`](tools/) | Un serveur MCP minimal et un générateur OpenAPI vers mocks et types. |
+| [`hooks/`](hooks/) | Hooks exécutables — dont `doc-schema-sync.sh`, adopté sur le terrain. |
+| [`tools/`](tools/) | Outillage déprécié (2026-08), conservé pour référence. |
 
 ---
 
 ## Documentation
 
-Lisez dans l'ordre, ou allez directement à ce dont vous avez besoin. Chaque
-chapitre est autonome.
-
-**Fondations**
-- [00 · Introduction](docs/fr/00-introduction.md) — pourquoi Mainstay existe, et comment lire cette documentation
-- [01 · Les trois piliers](docs/fr/01-three-pillars.md) — mémoire, contrat, garde-fous
-- [02 · Le monorepo](docs/fr/02-monorepo.md) — la connaissance vit à côté du code
-- [03 · L'architecture agentique](docs/fr/03-agent-architecture.md) — les six couches autour d'un modèle
-- [04 · Les sources de vérité](docs/fr/04-sources-of-truth.md) — qui gagne quand les sources divergent
-
-**La méthode en mouvement**
-- [05 · La chaîne de livraison](docs/fr/05-the-delivery-chain.md) — du vide à la production
-- [06 · Le prompt comme contrat](docs/fr/06-prompt-as-contract.md) — chaque section ferme une porte
-- [07 · Les zones grises](docs/fr/07-grey-zones.md) — le cœur de la méthode
-- [08 · Protocoles de défaillance](docs/fr/08-failure-protocols.md) — quand quelque chose casse
-- [09 · Patterns et anti-patterns](docs/fr/09-patterns-and-antipatterns.md) — le catalogue
-
-**Pour aller plus loin**
-- [10 · Démarrage rapide](docs/fr/10-quickstart.md) — dépôts greenfield et existants
-- [11 · Orchestration multi-agents](docs/fr/11-multi-agent-orchestration.md) — chef d'orchestre, bras droit, exécutant
-- [12 · Observabilité et métriques](docs/fr/12-observability-and-metrics.md) — mesurer la santé de la méthode
-- [13 · Tester et évaluer les agents](docs/fr/13-testing-and-evaluating-agents.md) — prouver qu'un agent honore le contrat
-- [14 · CI/CD et hooks](docs/fr/14-cicd-and-hooks.md) — la boucle d'auto-correction
-- [15 · Adoption par l'équipe](docs/fr/15-team-adoption.md) — rôles, rituels, montée en charge
-- [16 · FAQ](docs/fr/16-faq.md) — des réponses tranchantes aux questions courantes
-- [17 · Glossaire](docs/fr/17-glossary.md) — chaque terme, défini
+Le parcours court : [la préface](docs/fr/00-preface.md), puis
+[les trois piliers](docs/fr/core/01-three-pillars.md),
+[la chaîne de livraison](docs/fr/core/04-delivery-chain.md),
+[les zones grises](docs/fr/core/05-grey-zones-and-divergence.md), et votre
+profil. L'index complet — cœur, profils, référence — est dans
+[**docs/fr/README.md**](docs/fr/README.md).
 
 ---
 
@@ -169,6 +182,11 @@ Mainstay est une **méthode**, pas un outil. Elle est agnostique du modèle, du
 langage et du domaine. Elle ne livre pas un runtime, un framework ou une
 dépendance à importer. Elle livre une façon de travailler, plus les modèles, les
 skills, les hooks et les exemples pour la mettre en pratique aujourd'hui.
+
+Elle ne promet pas que les agents se passent de supervision. Elle rend la
+supervision structurée : sur tous ses terrains, la règle est le go humain
+explicite, consigné, avant toute mise en production — et les violations de
+cette règle sont elles-mêmes dans les registres, où elles l'ont fondée.
 
 Reprenez-la, adaptez-la, contredisez-la. Ce sont les conversations qui font
 vraiment avancer.
