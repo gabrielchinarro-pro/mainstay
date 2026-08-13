@@ -12,12 +12,16 @@ to wire it, and degrades gracefully — none of them hard-crash a clean checkout
 
 ## The hooks in this directory
 
-| Hook | Trigger event | What it does |
-|---|---|---|
-| `post-edit-format.sh` | after a file edit | Runs the detected formatter and linter on the changed files. No-ops cleanly if no tool is present. |
-| `pre-commit-tests.sh` | before a commit | Runs the test suite. Blocks the commit on failure. |
-| `doc-schema-sync.sh` | before a commit | If the commit touches schema/migration files, blocks unless the canonical data-model docs under `apps/backend/docs/database/` were updated in the same change. |
-| `grey-zone-reminder.sh` | after a prototype generation artifact changes | Prints the grey-zone scan checklist as a reminder. Never blocks. |
+Each hook carries its field status (as of 2026-08). One has been adopted and
+adapted on a real project; the other three are prescriptive designs with no
+field copy to show for them — usable, but unproven.
+
+| Hook | Trigger event | What it does | Field status |
+|---|---|---|---|
+| `doc-schema-sync.sh` | before a commit | If the commit touches schema/migration files, blocks unless the canonical data-model docs under `apps/backend/docs/database/` were updated in the same change. | **Adopted in the field** |
+| `post-edit-format.sh` | after a file edit | Runs the detected formatter and linter on the changed files. No-ops cleanly if no tool is present. | Prescriptive, unproven |
+| `pre-commit-tests.sh` | before a commit | Runs the test suite. Blocks the commit on failure. | Prescriptive, unproven |
+| `grey-zone-reminder.sh` | after a prototype generation artifact changes | Prints the grey-zone scan checklist as a reminder. Never blocks. | Prescriptive, unproven |
 
 ## The self-correction loop
 
