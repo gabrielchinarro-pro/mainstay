@@ -5,12 +5,13 @@
 **Turn raw model power into shipped software — without the guesswork.**
 
 A method for agent-driven software delivery: the memory, contracts, and
-guardrails that keep an AI agent's output upright.
+guardrails that keep an AI agent's output upright. Proven in the field before
+it was written down.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Docs](https://img.shields.io/badge/docs-en%20%7C%20fr-informational.svg)](docs/en/README.md)
-[![Method, not a tool](https://img.shields.io/badge/method-not%20a%20tool-orange.svg)](#what-mainstay-is-and-is-not)
+[![Method, not a tool](https://img.shields.io/badge/method-not%20a%20tool-orange.svg)](#what-mainstay-is--and-is-not)
 
 **English** · [Français](README.fr.md)
 
@@ -23,19 +24,38 @@ guardrails that keep an AI agent's output upright.
 Everyone is watching the model. The game is played somewhere else.
 
 A model is a brain. An agent is that brain given hands — it can act, not just
-answer. But a brilliant brain with hands, and no memory or rules, does the wrong
-thing: fast, and with confidence.
+answer. But a brilliant brain with hands, and no memory or rules, does the
+wrong thing: fast, and with confidence. What turns that power into shipped
+software is not the brain. It is everything you build around it — its
+infrastructure. **Mainstay is that infrastructure**, described in enough detail
+to clone.
 
-What turns that power into a useful result is not the brain. It is everything
-you build around it — its infrastructure. **Mainstay is that infrastructure**,
-described in enough detail to clone and use: the monorepo that anchors knowledge
-in code, the layers that equip an agent, the chain that runs from nothing to
-production, the protocols that hold when things break, and the templates to copy.
+Mainstay is not theory put into practice; it is practice turned into theory.
+The protocol was executed on a real batch of work before this repository was
+published, and the canon has kept absorbing what the field proved. Three facts,
+among those the corpus carries:
 
-The promise is not speed by cutting corners. It is delivering in a few weeks
-what used to take three months — by removing the round-trips, the grey zones,
-and the half-written specs. The agent moves fast *because nothing leaves it room
-for doubt.* The constraint does not slow it down; it frees it from hesitation.
+- On **a legacy e-commerce platform in production**, five days separate the
+  first commit under the method from switching all of the client's shops over
+  in production. That platform has since kept a registry under one rule — no
+  release without an entry, no entry without a release: 239 entries and 193
+  version tags in three months, with the human go recorded down to the
+  decision-maker's exact words — including its two absences, which are what
+  produced the rule.
+- The discipline of proof caught real money there: a missing VAT on shipping
+  fees — 146 orders, €2,655.70 in aggregate — fixed with a probe measuring the
+  actual code path, 44 cases verified, zero change to the price any customer
+  paid.
+- On **a fintech**, three product acceptance passes had returned GO; the
+  adversarial reviewers refused the commit twice, over four defects no
+  acceptance pass had seen. The method does not count its findings: it refutes
+  them.
+
+**The status of this evidence:** it comes from a private corpus — dated facts,
+counters obtained by running commands against the artifacts, verified by an
+internal audit in three adversarial passes — and it is not replayable by the
+reader. No figure that could not be verified even internally is published. The
+detail and the limits are in [the preface](docs/en/00-preface.md).
 
 > A **mainstay** is the line that holds a ship's mast upright — and, in plain
 > English, the thing a system depends on to stay standing.
@@ -82,11 +102,27 @@ pillars, not the model.**
 
 ---
 
+## Four profiles, one method
+
+The method is the same everywhere; only its embodiment changes. The variable
+that governs how much apparatus you need is neither the size of the code nor
+the length of the job: it is **code ownership × cost of error**. Four questions
+find your profile — the full selector is in
+[the preface](docs/en/00-preface.md).
+
+| Profile | For whom | What changes |
+|---|---|---|
+| [S — Compressed Solo](docs/en/profiles/solo-compressed.md) | One head, one deliverable, a cycle in days. | Functions kept, artifacts reincarnated: the vault becomes a journal, the DoD a checkable acceptance run with proofs. |
+| [R — Run & Audit](docs/en/profiles/run-and-audit.md) | Someone else's code, a live platform, a high cost of error. | The method does not compress: it hardens. Timestamped backup before every write, explicit go in the current turn. |
+| [P — Product Build](docs/en/profiles/product-build.md) | Building screen by screen, solo or two-to-three. | The full canonical chain: proto → grey zones → frozen contract → build → return to vault. |
+| [E — Team & Fleet](docs/en/profiles/team-fleet.md) | Several real signatories, financial or regulatory stakes. | Nothing removed from the core; named gates, attestations, adversarial doubling, wave sequencing added. |
+
+---
+
 ## Quickstart
 
-Adopt Mainstay on a fresh repository in five steps. The full guide — including
-how to retrofit it onto an existing codebase — is in
-[**docs/en/10-quickstart.md**](docs/en/10-quickstart.md).
+Adopt Mainstay on a fresh repository in five steps. The short reading path —
+the spine in one hour — is in [**docs/en/README.md**](docs/en/README.md).
 
 ```bash
 # 1. Clone Mainstay for its templates, skills, and hooks
@@ -118,43 +154,24 @@ Then follow a real feature end to end in
 
 | Path | What you get |
 |---|---|
-| [`docs/en/`](docs/en/README.md) · [`docs/fr/`](docs/fr/README.md) | 18 self-contained chapters, English and French. |
-| [`templates/`](templates/) | Copyable models: context file, prompts, contract, decision, vault index, grey-zone ledger. |
+| [`docs/en/`](docs/en/README.md) · [`docs/fr/`](docs/fr/README.md) | A preface, 13 core chapters, 4 profiles, 6 reference annexes — English and French. |
+| [`templates/`](templates/README.md) | Copyable models: context file, contract, decision, release registry, handoff, resume prompt, gates, push playbook, divergence register. |
 | [`examples/walkthrough/`](examples/walkthrough/README.md) | One fictional feature, followed from vault to production with every real artifact. |
 | [`examples/monorepo-skeleton/`](examples/monorepo-skeleton/) | An annotated directory tree for a Mainstay monorepo. |
 | [`skills/`](skills/) | Working example skills with executable scripts. |
-| [`hooks/`](hooks/) | Executable hooks, including the doc/schema sync guardrail. |
-| [`tools/`](tools/) | A minimal MCP server and an OpenAPI-to-mocks-and-types generator. |
+| [`hooks/`](hooks/) | Executable hooks — including `doc-schema-sync.sh`, adopted in the field. |
+| [`tools/`](tools/) | Deprecated tooling (2026-08), kept for reference. |
 
 ---
 
 ## Documentation
 
-Read in order, or jump to what you need. Each chapter is self-contained.
-
-**Foundations**
-- [00 · Introduction](docs/en/00-introduction.md) — why Mainstay exists, and how to read these docs
-- [01 · The Three Pillars](docs/en/01-three-pillars.md) — memory, contract, guardrails
-- [02 · The Monorepo](docs/en/02-monorepo.md) — knowledge lives beside the code
-- [03 · The Agentic Architecture](docs/en/03-agent-architecture.md) — the six layers around a model
-- [04 · Sources of Truth](docs/en/04-sources-of-truth.md) — who wins when sources disagree
-
-**The method in motion**
-- [05 · The Delivery Chain](docs/en/05-the-delivery-chain.md) — from nothing to production
-- [06 · The Prompt as a Contract](docs/en/06-prompt-as-contract.md) — every section closes a door
-- [07 · Grey Zones](docs/en/07-grey-zones.md) — the heart of the method
-- [08 · Failure Protocols](docs/en/08-failure-protocols.md) — when something breaks
-- [09 · Patterns & Anti-Patterns](docs/en/09-patterns-and-antipatterns.md) — the catalogue
-
-**Going further**
-- [10 · Quickstart](docs/en/10-quickstart.md) — greenfield and existing repos
-- [11 · Multi-Agent Orchestration](docs/en/11-multi-agent-orchestration.md) — conductor, lieutenant, runner
-- [12 · Observability & Metrics](docs/en/12-observability-and-metrics.md) — measuring method health
-- [13 · Testing & Evaluating Agents](docs/en/13-testing-and-evaluating-agents.md) — proving an agent honours the contract
-- [14 · CI/CD & Hooks](docs/en/14-cicd-and-hooks.md) — the self-correction loop
-- [15 · Team Adoption](docs/en/15-team-adoption.md) — roles, rituals, scaling
-- [16 · FAQ](docs/en/16-faq.md) — sharp answers to common questions
-- [17 · Glossary](docs/en/17-glossary.md) — every term, defined
+The short path: [the preface](docs/en/00-preface.md), then
+[the three pillars](docs/en/core/01-three-pillars.md),
+[the delivery chain](docs/en/core/04-delivery-chain.md),
+[grey zones](docs/en/core/05-grey-zones-and-divergence.md), and your profile.
+The full index — core, profiles, reference — is in
+[**docs/en/README.md**](docs/en/README.md).
 
 ---
 
@@ -164,6 +181,11 @@ Mainstay is a **method**, not a tool. It is agnostic of the model, the language,
 and the domain. It does not ship a runtime, a framework, or a dependency to
 import. It ships a way of working, plus the templates, skills, hooks, and
 examples to put it into practice today.
+
+It does not promise that agents run unsupervised. It makes supervision
+structured: on every terrain, the rule is an explicit, recorded human go before
+any release — and the violations of that rule are themselves in the registries,
+where they produced it.
 
 Take it, adapt it, contradict it. The conversations are what move things forward.
 

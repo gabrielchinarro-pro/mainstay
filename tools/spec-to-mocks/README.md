@@ -1,9 +1,14 @@
 # spec-to-mocks
 
+> **Deprecated (2026-08).** Never adopted in the field across three months of
+> practice — kept for reference; not maintained. The contract-first idea it
+> illustrates lives on in
+> [`docs/en/core/04-delivery-chain.md`](../../docs/en/core/04-delivery-chain.md).
+
 Generate TypeScript types, a typed endpoints list, and JSON mock fixtures from
 an OpenAPI 3 spec. This is the **contract-first toolchain** of the Mainstay
 delivery chain — see
-[`docs/en/05-the-delivery-chain.md`](../../docs/en/05-the-delivery-chain.md),
+[`docs/en/core/04-delivery-chain.md`](../../docs/en/core/04-delivery-chain.md),
 step 4.
 
 ## The contract-first idea
