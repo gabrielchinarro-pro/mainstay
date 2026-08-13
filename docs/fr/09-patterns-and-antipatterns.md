@@ -15,6 +15,7 @@ flowchart LR
       P6["Fixed vs conditional zones"]
       P7["Escalate, never decide alone"]
       P8["Reconcile vs live before cutover"]
+      P9["Verify via real consumer"]
     end
     subgraph A["Anti-patterns — avoid these"]
       A1["Invent to 'improve'"]
@@ -24,6 +25,7 @@ flowchart LR
       A5["Underrating the contract phase"]
       A6["Destructive regeneration"]
       A7["Deferring grey zones"]
+      A8["'Exhaustive' w/o blind spot"]
     end
 ```
 
@@ -95,6 +97,14 @@ flowchart LR
 
 **Comment.** Tirez les champs faisant autorité (`clé + état + valeur`) de chaque source live, en lecture seule. Matchez par une clé stable. Tranchez les conflits par la table d'autorité du [chapitre 04](./04-sources-of-truth.md) — une source est la référence, les autres comblent les trous, et une source marquée non fiable n'est *jamais* l'autorité. Écrivez dans la copie de staging avec un backup, puis **conditionnez le cutover à un contrôle de certification en lecture seule** qui renvoie un unique GO / NO-GO. Le cutover n'a pas lieu sur une affirmation verte ; il a lieu sur une preuve verte (pattern 5, appliqué à la donnée).
 
+### Pattern 9 — Vérifier par le vrai consommateur, pas par un proxy commode *(extension)*
+
+**Quoi.** Quand le résultat d'une vérification contredit la réalité observée, rejoue la vérif via le *client exact* et le chemin qu'emprunte le vrai système — pas l'outil le plus à portée de main.
+
+**Pourquoi ça marche.** Un outil proxy peut échouer là où le vrai client réussit. Un CLI `mysql` a refusé un mot de passe que le driver PHP de l'application acceptait sur le même socket ; se fier au CLI aurait annulé un changement qui marchait. L'« échec » du proxy était un faux négatif, pas une preuve.
+
+**Comment.** Calque la vérif sur le vrai consommateur : connecte-toi comme l'app, requête comme un navigateur. Quand le proxy et la réalité divergent, le vrai consommateur fait foi — et un feu vert de proxy n'est pas une preuve verte (pattern 5).
+
 ---
 
 ## Anti-patterns
@@ -155,6 +165,14 @@ flowchart LR
 
 **Correction.** Chaque zone grise se résout en exactement l'une de deux issues — une décision formelle ou une note de contrat — et jamais une troisième ([chapitre 07](./07-grey-zones.md)). Le registre des zones grises n'est pas clos tant que chaque ligne n'a pas une résolution.
 
+### Anti-pattern 8 — Prétendre « exhaustif » sans nommer l'angle mort *(extension)*
+
+**Symptôme.** Annoncer une couverture totale — « c'était la seule », « tout est clean » — alors que la méthode n'a regardé que la surface facile : noms de premier niveau, quelques slugs devinés, un seul serveur.
+
+**Coût.** Un vrai défaut ou une exposition survit derrière la fausse confiance et ressort au pire moment. Un balayage « exhaustif » limité aux fichiers de premier niveau et aux noms devinés a raté **22 Go de dumps de la base clients téléchargeables publiquement** — trouvés seulement quand une recherche récursive par contenu a enfin été lancée.
+
+**Correction.** Énonce la *méthode* et ses limites avec toute affirmation de couverture (« grep des HTML de premier niveau ; sous-dossiers, autres extensions et autres serveurs non couverts »). Préfère la recherche récursive par contenu au devinage de noms. Et traite le « t'es sûr ? » d'un interlocuteur comme un cadeau qui rattrape le trou, pas comme une attaque à parer.
+
 ---
 
 ## Le catalogue comme checklist
@@ -171,12 +189,14 @@ Utilisez ceci comme auto-audit rapide en fin de fonctionnalité.
 | Séparé zones fixes et conditionnelles dans le contrat ? | P6 |
 | Escaladé les manques au lieu de rapiécer le code ? | P7 |
 | Réconcilié contre la source live (pas le snapshot) avant le cutover ? | P8 |
+| Vérifié par le vrai consommateur quand un check contredit la réalité ? | P9 |
 | Raccordé l'intégration par vagues, pas en big bang ? | A2 |
 | Gardé le diff cantonné à la demande ? | A3 |
 | Gardé toutes les sources cohérentes ? | A4 |
 | Traité le contrat comme du vrai travail ? | A5 |
 | Corrigé la casse de façon minimale, sans régénérer ? | A6 |
 | Résolu chaque zone grise maintenant, pas plus tard ? | A7 |
+| Nommé l'angle mort de la méthode au lieu de clamer « exhaustif » ? | A8 |
 
 Un « non » quelque part est un mode de défaillance connu avec une correction connue. Le catalogue existe pour qu'aucun d'entre eux ne soit une surprise.
 
