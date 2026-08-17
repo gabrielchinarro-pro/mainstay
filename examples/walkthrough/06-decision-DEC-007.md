@@ -7,7 +7,7 @@ supersedes: null
 related_screens: [saved-views-panel]
 ---
 
-# DEC-007 — Default saved view is a per-user preference
+# DEC-007 · Default saved view is a per-user preference
 
 ## Context
 
@@ -15,10 +15,10 @@ The grey-zone scan of `saved-views-panel`
 ([`02-grey-zone-scan.md`](./02-grey-zone-scan.md), rows 1 and 2) surfaced two
 linked unknowns:
 
-- On opening the screen, the prototype applied the **first view in the list** —
+- On opening the screen, the prototype applied the **first view in the list**;
   nobody specified what should happen on first load.
 - The prototype's "Set as default" action appeared to change the default
-  **for the whole workspace** — the concept note said a user marks "their"
+  **for the whole workspace**; the concept note said a user marks "their"
   default but never said whether "default" is per-user or per-workspace.
 
 Both touch every user of the screen, so this is a formal decision, not a
@@ -35,7 +35,7 @@ raw table is shown.
 ## Justification
 
 - A workspace-wide default would let one member silently reframe the screen
-  for everyone — a surprising, unowned side effect.
+  for everyone: a surprising, unowned side effect.
 - Users build saved views around their own recurring tasks; "default" is
   inherently personal.
 - A per-user default keeps the "Set as default" action safe: its blast radius

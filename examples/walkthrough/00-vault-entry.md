@@ -8,10 +8,10 @@ related_screens: [saved-views-panel]
 related_decisions: []
 ---
 
-# Concept — Saved Views
+# Concept · Saved Views
 
 > A business concept note. It pre-exists in the vault before any prototype is
-> drawn. It explains *what the feature is and why it matters* — never how it
+> drawn. It explains *what the feature is and why it matters*, never how it
 > looks or how it is built. The visual is the prototype's job; the behaviour
 > is the contract's job.
 
@@ -20,9 +20,9 @@ related_decisions: []
 A **saved view** is a named, reusable combination of the three things a user
 sets up on a data-table screen:
 
-1. **Filters** — which rows are shown.
-2. **Sort** — the order rows appear in.
-3. **Visible columns** — which columns are shown, and in what order.
+1. **Filters**: which rows are shown.
+2. **Sort**: the order rows appear in.
+3. **Visible columns**: which columns are shown, and in what order.
 
 Instead of reconfiguring the table every session, a user saves that
 configuration once, names it, and recalls it in one click.
@@ -47,7 +47,7 @@ shareable so a workspace converges on common ways of looking at the data.
 ## Behavioural intent (not yet specified)
 
 The concept note records *intent*, not specification. The following points
-are deliberately open — they are exactly what the prototype and the grey-zone
+are deliberately open: they are exactly what the prototype and the grey-zone
 scan will surface and the contract will pin down:
 
 - A user can mark one view as their default.
@@ -62,7 +62,7 @@ These open points are why this concept later spawns decisions **DEC-007**
 - **In scope:** filters, sort, visible columns; naming; default; private vs
   shared.
 - **Out of scope:** column width, pagination size, cross-screen views,
-  scheduling or exporting a view. <!-- TODO: confirm — source concept note is
+  scheduling or exporting a view. <!-- TODO: confirm; source concept note is
   silent on whether exporting is a future phase. -->
 
 ## Related artifacts

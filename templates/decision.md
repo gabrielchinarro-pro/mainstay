@@ -2,7 +2,7 @@
   TEMPLATE: decision (DEC-XXX)
   COPY TO: vault/decisions/DEC-XXX.md
 
-  A decision records something that was settled — most often the formal outcome
+  A decision records something that was settled, most often the formal outcome
   of a grey zone. It is dated, justified, and becomes a rule the whole repo
   follows. Once written, a decision is not edited in place: if it is overturned,
   a new decision supersedes it and this one's status becomes `superseded`.
@@ -22,7 +22,7 @@ status: accepted                  # proposed | accepted | superseded
 supersedes: null                  # the id this decision replaces, or null
 ---
 
-# DEC-XXX — <Short Title>
+# DEC-XXX · <Short Title>
 
 ## Context
 
@@ -45,7 +45,7 @@ unspecified, and where it surfaced.>
 
 ## Consequences
 
-<!-- What this imposes downstream — on the design, the contract, the code. List
+<!-- What this imposes downstream: on the design, the contract, the code. List
      concrete obligations so an agent can act on them. -->
 - **Design / prototype:** <what changes or is constrained>.
 - **Contract:** <which contract section must reflect this; link the contract>.
@@ -54,7 +54,7 @@ unspecified, and where it surfaced.>
 <!--
   AFTER WRITING:
    - Add this id to `related_decisions` in every contract it affects.
-   - Update the lower sources (contract, then code) to match — never leave two
+   - Update the lower sources (contract, then code) to match; never leave two
      truths coexisting.
    - Link it from the grey-zone ledger row that produced it.
 -->

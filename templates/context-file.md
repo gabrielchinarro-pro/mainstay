@@ -18,20 +18,20 @@
   Delete every HTML comment before committing. Replace every <PLACEHOLDER>.
 -->
 
-# Project Context — <PROJECT_NAME>
+# Project Context · <PROJECT_NAME>
 
 <!-- One or two sentences: what this repository is, who ships it. No history,
      no roadmap. Just enough for an agent to know where it landed. -->
 
 <PROJECT_NAME> is a <one-line description of the product>. This file is the
 contract every agent reads first. It is intentionally short. When you need
-detail, follow the "Load on demand" pointers at the bottom — do not expect the
+detail, follow the "Load on demand" pointers at the bottom; do not expect the
 detail to be inline here.
 
 ## Commands
 
 <!-- The exact, runnable commands for the everyday loop. An agent should never
-     have to guess these. Keep them current — a stale command here is a trap. -->
+     have to guess these. Keep them current: a stale command here is a trap. -->
 
 | Task | Command |
 |---|---|
@@ -44,12 +44,12 @@ detail to be inline here.
 
 ## Architecture rules
 
-<!-- Transverse rules ONLY — things true across the whole repo. If a rule is
+<!-- Transverse rules ONLY: things true across the whole repo. If a rule is
      specific to one feature, it belongs in that feature's contract. Each rule
      is one line, imperative, testable. -->
 
 - The code is the source of truth for the data schema. Never describe a table
-  or type from memory — read it from `<path to entities/migrations>`.
+  or type from memory; read it from `<path to entities/migrations>`.
 - The canonical data-model docs live in `apps/backend/docs/database/`. A change
   to the schema and a change to those docs ship in the same commit.
 - The vault (`vault/`) is the navigable mirror of decisions and contracts. It
@@ -63,24 +63,24 @@ detail to be inline here.
 <!-- Naming, file layout, and style choices an agent must follow to stay
      consistent with the existing codebase. Keep it to what is non-obvious. -->
 
-- **Naming:** <files / components / variables — e.g. `kebab-case` files,
+- **Naming:** <files / components / variables, e.g. `kebab-case` files,
   `PascalCase` components>.
-- **Structure:** <where new code goes — e.g. one folder per feature under
+- **Structure:** <where new code goes, e.g. one folder per feature under
   `apps/frontend/src/features/`>.
 - **Style:** <enforced by the formatter; name it so the agent does not
-  hand-format — e.g. "formatting is enforced by the formatter; do not align by
+  hand-format, e.g. "formatting is enforced by the formatter; do not align by
   hand">.
-- **Commits:** <convention — e.g. Conventional Commits, present tense>.
+- **Commits:** <convention, e.g. Conventional Commits, present tense>.
 - **Tests:** <where tests live and what must be covered>.
 
 ## Permanent prohibitions
 
 <!-- The guardrail pillar. What an agent must NEVER do, written plainly, out of
-     reach of interpretation. An agent fills every gap you leave — and rarely
+     reach of interpretation. An agent fills every gap you leave, and rarely
      the way you hoped. Be specific and absolute. -->
 
 - Never invent a label, copy string, value, or endpoint. If it is not in a
-  source, stop and escalate — do not guess.
+  source, stop and escalate; do not guess.
 - Never edit generated files by hand (`<list generated paths/globs>`).
 - Never commit secrets, tokens, or credentials. Use placeholders and the
   secrets manager.

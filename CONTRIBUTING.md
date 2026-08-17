@@ -2,7 +2,7 @@
 
 Thank you for considering a contribution. Mainstay is a method, kept as a
 public reference. It improves through correction, sharpening, translation, and
-new worked examples — and through disagreement aired in the open.
+new worked examples, and through disagreement aired in the open.
 
 **English** · [Français](#contribuer-à-mainstay-français)
 
@@ -10,11 +10,11 @@ new worked examples — and through disagreement aired in the open.
 
 ## Ways to contribute
 
-- **Corrections** — a wrong claim, a broken link, a code example that does not run.
-- **Sharpening** — a chapter that could be clearer, shorter, or more concrete.
-- **Translations** — keeping `docs/fr/` in sync with `docs/en/`, or proposing a new language.
-- **Examples** — new walkthroughs, skills, hooks, or tools that demonstrate the method.
-- **Disagreement** — a reasoned case against a rule. Open an issue; the method expects to be challenged.
+- **Corrections**: a wrong claim, a broken link, a code example that does not run.
+- **Sharpening**: a chapter that could be clearer, shorter, or more concrete.
+- **Translations**: keeping `docs/fr/` in sync with `docs/en/`, or proposing a new language.
+- **Examples**: new walkthroughs, skills, hooks, or tools that demonstrate the method.
+- **Disagreement**: a reasoned case against a rule. Open an issue; the method expects to be challenged.
 
 ## Ground rules
 
@@ -29,7 +29,7 @@ Mainstay practises what it documents. Contributions follow the same discipline.
    secrets, tokens, credentials, or internal URLs. Every example is generic or
    fictional. Use placeholders such as `https://api.example.com` and
    `<API_TOKEN>`. The method stays domain-agnostic.
-4. **Code must run.** Every code example is minimal, readable, and functional —
+4. **Code must run.** Every code example is minimal, readable, and functional,
    not pseudo-code. Shell scripts must pass `bash -n`. Keep examples small.
 5. **Cross-links stay valid.** Internal links are relative and must resolve.
 6. **No filler.** Every paragraph teaches something. If a sentence does not
@@ -67,7 +67,7 @@ trees were updated. Small, focused PRs are reviewed faster than large ones.
   spelling elsewhere.
 - Tag every code block with a language. Prefer tables and Mermaid diagrams
   where structure helps.
-- Terminology is fixed — see [docs/en/17-glossary.md](docs/en/17-glossary.md).
+- Terminology is fixed: see [docs/en/17-glossary.md](docs/en/17-glossary.md).
   Do not introduce a synonym for a defined term.
 
 ## Reporting issues
@@ -89,15 +89,15 @@ By contributing, you agree that your contributions are licensed under the
 
 Merci d'envisager une contribution. Mainstay est une méthode, tenue comme une
 référence publique. Elle progresse par la correction, l'affinage, la traduction
-et de nouveaux exemples concrets — et par le désaccord exprimé ouvertement.
+et de nouveaux exemples concrets, et par le désaccord exprimé ouvertement.
 
 ## Comment contribuer
 
-- **Corrections** — une affirmation fausse, un lien cassé, un exemple de code qui ne tourne pas.
-- **Affinage** — un chapitre qui gagnerait à être plus clair, plus court, plus concret.
-- **Traductions** — garder `docs/fr/` synchronisé avec `docs/en/`, ou proposer une nouvelle langue.
-- **Exemples** — nouveaux fils rouges, skills, hooks ou outils qui illustrent la méthode.
-- **Désaccord** — un argument raisonné contre une règle. Ouvrez une issue ; la méthode attend d'être contredite.
+- **Corrections** : une affirmation fausse, un lien cassé, un exemple de code qui ne tourne pas.
+- **Affinage** : un chapitre qui gagnerait à être plus clair, plus court, plus concret.
+- **Traductions** : garder `docs/fr/` synchronisé avec `docs/en/`, ou proposer une nouvelle langue.
+- **Exemples** : nouveaux fils rouges, skills, hooks ou outils qui illustrent la méthode.
+- **Désaccord** : un argument raisonné contre une règle. Ouvrez une issue ; la méthode attend d'être contredite.
 
 ## Règles de fond
 

@@ -10,7 +10,7 @@ description: >-
 # Contract Lint
 
 A contract is the source of truth for a screen's behaviour. It is dangerous to
-freeze one that is incomplete — a missing section is a grey zone with a title.
+freeze one that is incomplete: a missing section is a grey zone with a title.
 This skill checks a contract file mechanically so a freeze never ships a hole.
 
 ## When to run this
@@ -30,7 +30,7 @@ This skill checks a contract file mechanically so a freeze never ships a hole.
    next heading fails.
 5. **Signatures consistent.** If `status: frozen`, then both `signed_product`
    and `signed_engineering` must be `true`, both signature checkboxes in
-   section 12 must be ticked, and `frozen_on` must be a date — not `null`.
+   section 12 must be ticked, and `frozen_on` must be a date, not `null`.
 
 A contract that fails any check is not ready to freeze.
 
@@ -52,18 +52,18 @@ A contract that fails any check is not ready to freeze.
 
 ## Exit codes
 
-- `0` — the contract passed every check; it is structurally ready to freeze.
-- `1` — bad usage, or the file does not exist.
-- `2` — the contract failed one or more checks; see the printed messages.
+- `0`: the contract passed every check; it is structurally ready to freeze.
+- `1`: bad usage, or the file does not exist.
+- `2`: the contract failed one or more checks; see the printed messages.
 
 ## Files in this skill
 
-- `SKILL.md` — this file.
-- `lint.sh` — the linter. Run `--help` for usage.
+- `SKILL.md`: this file.
+- `lint.sh`: the linter. Run `--help` for usage.
 
 ## See also
 
-- [`../../templates/contract.md`](../../templates/contract.md) — the contract
+- [`../../templates/contract.md`](../../templates/contract.md): the contract
   template this linter expects.
-- [`../grey-zone-scan/`](../grey-zone-scan/) — run the grey-zone scan first;
+- [`../grey-zone-scan/`](../grey-zone-scan/): run the grey-zone scan first;
   lint the contract once the grey zones are folded in.

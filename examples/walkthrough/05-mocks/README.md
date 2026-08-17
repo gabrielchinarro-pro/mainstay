@@ -1,6 +1,6 @@
-# 05 — Generated mocks
+# 05 · Generated mocks
 
-These files are **generated artifacts** — produced from
+These files are **generated artifacts**, produced from
 [`../04-api-spec.yaml`](../04-api-spec.yaml) by
 [`tools/spec-to-mocks`](../../../tools/spec-to-mocks/). Do not edit them by
 hand; re-run the generator when the spec changes:
