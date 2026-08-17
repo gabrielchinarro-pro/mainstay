@@ -38,6 +38,6 @@
 <text x="1040" y="82" font-size="17" font-weight="700" fill="#E06A50">6</text>
 <text x="1100" y="102" font-size="14" font-weight="600" fill="#E9E6DE" text-anchor="middle">Retour au vault</text>
 <text x="1100" y="119" font-size="11" fill="#9B968A" text-anchor="middle">décisions consignées</text>
-<path d="M 1100 134 C 1100 190, 80 190, 80 142" fill="none" stroke="#E06A50" stroke-width="1.6" stroke-dasharray="7 5" marker-end="url(#ar)"/>
+<path d="M 1100 134 C 1100 190, 80 190, 80 142" fill="none" stroke="#E06A50" stroke-width="1.6" marker-end="url(#ar)"/>
 <text x="590" y="208" font-size="12.5" fill="#E06A50" text-anchor="middle" font-style="italic">enrichit la fonctionnalité suivante</text>
 </svg>
