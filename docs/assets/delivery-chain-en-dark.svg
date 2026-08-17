@@ -1,43 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 250" font-family="'Avenir Next','Segoe UI',system-ui,sans-serif">
-<rect width="1180" height="250" fill="#17181B"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 258" font-family="'Avenir Next','Segoe UI',system-ui,sans-serif">
+<rect width="1180" height="258" fill="#17181B"/>
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#E9E6DE"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#E06A50"/></marker></defs>
-<rect x="6" y="60" width="148" height="78" rx="4" fill="#1F2126" stroke="#3A3C42" stroke-width="1.4"/>
-<text x="20" y="86" font-size="17" font-weight="700" fill="#E06A50">0</text>
-<text x="80" y="106" font-size="14" font-weight="600" fill="#E9E6DE" text-anchor="middle">Vault</text>
-<text x="80" y="123" font-size="11" fill="#9B968A" text-anchor="middle">knowledge base</text>
-<line x1="154" y1="99" x2="176" y2="99" stroke="#E9E6DE" stroke-width="1.4" marker-end="url(#a)"/>
-<rect x="176" y="60" width="148" height="78" rx="4" fill="#1F2126" stroke="#3A3C42" stroke-width="1.4"/>
-<text x="190" y="86" font-size="17" font-weight="700" fill="#E06A50">1</text>
-<text x="250" y="106" font-size="14" font-weight="600" fill="#E9E6DE" text-anchor="middle">Prototype</text>
-<text x="250" y="123" font-size="11" fill="#9B968A" text-anchor="middle">one prompt</text>
-<line x1="324" y1="99" x2="346" y2="99" stroke="#E9E6DE" stroke-width="1.4" marker-end="url(#a)"/>
-<rect x="346" y="60" width="148" height="78" rx="4" fill="#1F2126" stroke="#3A3C42" stroke-width="1.4"/>
-<text x="360" y="86" font-size="17" font-weight="700" fill="#E06A50">2</text>
-<text x="420" y="106" font-size="14" font-weight="600" fill="#E9E6DE" text-anchor="middle">Grey-zone scan</text>
-<text x="420" y="123" font-size="11" fill="#9B968A" text-anchor="middle">prototype vs brief</text>
-<line x1="494" y1="99" x2="516" y2="99" stroke="#E9E6DE" stroke-width="1.4" marker-end="url(#a)"/>
-<rect x="516" y="60" width="148" height="78" rx="4" fill="#1F2126" stroke="#3A3C42" stroke-width="1.4"/>
-<text x="530" y="86" font-size="17" font-weight="700" fill="#E06A50">3</text>
-<text x="590" y="106" font-size="14" font-weight="600" fill="#E9E6DE" text-anchor="middle">Contract</text>
-<text x="590" y="123" font-size="11" fill="#9B968A" text-anchor="middle">double signature</text>
-<line x1="664" y1="99" x2="686" y2="99" stroke="#E9E6DE" stroke-width="1.4" marker-end="url(#a)"/>
-<rect x="686" y="60" width="148" height="78" rx="4" fill="#1F2126" stroke="#3A3C42" stroke-width="1.4"/>
-<text x="700" y="86" font-size="17" font-weight="700" fill="#E06A50">4</text>
-<text x="760" y="100" font-size="13.5" font-weight="600" fill="#E9E6DE" text-anchor="middle">Contract-first</text>
-<text x="760" y="116" font-size="13.5" font-weight="600" fill="#E9E6DE" text-anchor="middle">build</text>
-<text x="760" y="130" font-size="11" fill="#9B968A" text-anchor="middle">front + back in parallel</text>
-<line x1="834" y1="99" x2="856" y2="99" stroke="#E9E6DE" stroke-width="1.4" marker-end="url(#a)"/>
-<rect x="856" y="60" width="148" height="78" rx="4" fill="#1F2126" stroke="#3A3C42" stroke-width="1.4"/>
-<text x="870" y="86" font-size="17" font-weight="700" fill="#E06A50">5</text>
-<text x="930" y="100" font-size="13.5" font-weight="600" fill="#E9E6DE" text-anchor="middle">Definition of</text>
-<text x="930" y="116" font-size="13.5" font-weight="600" fill="#E9E6DE" text-anchor="middle">Done</text>
-<text x="930" y="130" font-size="11" fill="#9B968A" text-anchor="middle">per layer</text>
-<line x1="1004" y1="99" x2="1026" y2="99" stroke="#E9E6DE" stroke-width="1.4" marker-end="url(#a)"/>
-<rect x="1026" y="60" width="148" height="78" rx="4" fill="#1F2126" stroke="#3A3C42" stroke-width="1.4"/>
-<text x="1040" y="86" font-size="17" font-weight="700" fill="#E06A50">6</text>
-<text x="1100" y="100" font-size="13.5" font-weight="600" fill="#E9E6DE" text-anchor="middle">Back to</text>
-<text x="1100" y="116" font-size="13.5" font-weight="600" fill="#E9E6DE" text-anchor="middle">the vault</text>
-<text x="1100" y="130" font-size="11" fill="#9B968A" text-anchor="middle">decisions recorded</text>
-<path d="M 1100 138 C 1100 196, 80 196, 80 146" fill="none" stroke="#E06A50" stroke-width="1.6" stroke-dasharray="7 5" marker-end="url(#ar)"/>
-<text x="590" y="190" font-size="12.5" fill="#E06A50" text-anchor="middle" font-style="italic">enriches the next feature</text>
+<rect x="6" y="56" width="148" height="78" rx="4" fill="#1F2126" stroke="#3A3C42" stroke-width="1.4"/>
+<text x="20" y="82" font-size="17" font-weight="700" fill="#E06A50">0</text>
+<text x="80" y="102" font-size="14" font-weight="600" fill="#E9E6DE" text-anchor="middle">Vault</text>
+<text x="80" y="119" font-size="11" fill="#9B968A" text-anchor="middle">knowledge base</text>
+<line x1="154" y1="95" x2="176" y2="95" stroke="#E9E6DE" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="176" y="56" width="148" height="78" rx="4" fill="#1F2126" stroke="#3A3C42" stroke-width="1.4"/>
+<text x="190" y="82" font-size="17" font-weight="700" fill="#E06A50">1</text>
+<text x="250" y="102" font-size="14" font-weight="600" fill="#E9E6DE" text-anchor="middle">Prototype</text>
+<text x="250" y="119" font-size="11" fill="#9B968A" text-anchor="middle">one prompt</text>
+<line x1="324" y1="95" x2="346" y2="95" stroke="#E9E6DE" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="346" y="56" width="148" height="78" rx="4" fill="#1F2126" stroke="#3A3C42" stroke-width="1.4"/>
+<text x="360" y="82" font-size="17" font-weight="700" fill="#E06A50">2</text>
+<text x="420" y="102" font-size="14" font-weight="600" fill="#E9E6DE" text-anchor="middle">Grey-zone scan</text>
+<text x="420" y="119" font-size="11" fill="#9B968A" text-anchor="middle">prototype vs brief</text>
+<line x1="494" y1="95" x2="516" y2="95" stroke="#E9E6DE" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="516" y="56" width="148" height="78" rx="4" fill="#1F2126" stroke="#3A3C42" stroke-width="1.4"/>
+<text x="530" y="82" font-size="17" font-weight="700" fill="#E06A50">3</text>
+<text x="590" y="102" font-size="14" font-weight="600" fill="#E9E6DE" text-anchor="middle">Contract</text>
+<text x="590" y="119" font-size="11" fill="#9B968A" text-anchor="middle">double signature</text>
+<line x1="664" y1="95" x2="686" y2="95" stroke="#E9E6DE" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="686" y="56" width="148" height="78" rx="4" fill="#1F2126" stroke="#3A3C42" stroke-width="1.4"/>
+<text x="700" y="82" font-size="17" font-weight="700" fill="#E06A50">4</text>
+<text x="760" y="96" font-size="13.5" font-weight="600" fill="#E9E6DE" text-anchor="middle">Contract-first</text>
+<text x="760" y="112" font-size="13.5" font-weight="600" fill="#E9E6DE" text-anchor="middle">build</text>
+<text x="760" y="126" font-size="11" fill="#9B968A" text-anchor="middle">front + back in parallel</text>
+<line x1="834" y1="95" x2="856" y2="95" stroke="#E9E6DE" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="856" y="56" width="148" height="78" rx="4" fill="#1F2126" stroke="#3A3C42" stroke-width="1.4"/>
+<text x="870" y="82" font-size="17" font-weight="700" fill="#E06A50">5</text>
+<text x="930" y="96" font-size="13.5" font-weight="600" fill="#E9E6DE" text-anchor="middle">Definition of</text>
+<text x="930" y="112" font-size="13.5" font-weight="600" fill="#E9E6DE" text-anchor="middle">Done</text>
+<text x="930" y="126" font-size="11" fill="#9B968A" text-anchor="middle">per layer</text>
+<line x1="1004" y1="95" x2="1026" y2="95" stroke="#E9E6DE" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="1026" y="56" width="148" height="78" rx="4" fill="#1F2126" stroke="#3A3C42" stroke-width="1.4"/>
+<text x="1040" y="82" font-size="17" font-weight="700" fill="#E06A50">6</text>
+<text x="1100" y="96" font-size="13.5" font-weight="600" fill="#E9E6DE" text-anchor="middle">Back to</text>
+<text x="1100" y="112" font-size="13.5" font-weight="600" fill="#E9E6DE" text-anchor="middle">the vault</text>
+<text x="1100" y="126" font-size="11" fill="#9B968A" text-anchor="middle">decisions recorded</text>
+<path d="M 1100 134 C 1100 190, 80 190, 80 142" fill="none" stroke="#E06A50" stroke-width="1.6" stroke-dasharray="7 5" marker-end="url(#ar)"/>
+<text x="590" y="208" font-size="12.5" fill="#E06A50" text-anchor="middle" font-style="italic">enriches the next feature</text>
 </svg>
