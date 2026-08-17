@@ -38,6 +38,6 @@
 <text x="1100" y="96" font-size="13.5" font-weight="600" fill="#26241F" text-anchor="middle">Back to</text>
 <text x="1100" y="112" font-size="13.5" font-weight="600" fill="#26241F" text-anchor="middle">the vault</text>
 <text x="1100" y="126" font-size="11" fill="#6E685C" text-anchor="middle">decisions recorded</text>
-<path d="M 1100 134 C 1100 190, 80 190, 80 142" fill="none" stroke="#B0301C" stroke-width="1.6" stroke-dasharray="7 5" marker-end="url(#ar)"/>
+<path d="M 1100 134 C 1100 190, 80 190, 80 142" fill="none" stroke="#B0301C" stroke-width="1.6" marker-end="url(#ar)"/>
 <text x="590" y="208" font-size="12.5" fill="#B0301C" text-anchor="middle" font-style="italic">enriches the next feature</text>
 </svg>
