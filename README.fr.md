@@ -63,16 +63,10 @@ sont dans [la préface](docs/fr/00-preface.md).
 
 ## Mainstay en un schéma
 
-```mermaid
-flowchart LR
-    V[0 · Vault<br/>knowledge base] --> P[1 · Prototype<br/>one prompt]
-    P --> G[2 · Grey-zone scan<br/>prototype vs brief]
-    G --> C[3 · Contract<br/>double signature]
-    C --> I[4 · Contract-first build<br/>front + back in parallel]
-    I --> D[5 · Definition of Done<br/>per layer]
-    D --> R[6 · Back to the vault<br/>decisions recorded]
-    R -.enriches.-> V
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/delivery-chain-fr-dark.svg">
+  <img src="docs/assets/delivery-chain-fr-light.svg" alt="The Mainstay delivery chain: vault, prototype, grey-zone scan, contract, contract-first build, definition of done, back to the vault." width="100%">
+</picture>
 
 La connaissance démarre dans le **vault**. Un prototype est généré en **un seul
 prompt**. L'écart entre ce que l'agent a décidé et ce que le brief demandait est
@@ -80,6 +74,51 @@ balayé en **zones grises**. Le prototype validé devient un **contrat** signé.
 Front et back construisent en parallèle, en **contract-first**. « Fait » est
 défini par couche. Les décisions qui ont émergé refluent **dans le vault** — et
 la fonctionnalité suivante démarre plus intelligente.
+
+---
+
+## L'arène — quatre portes
+
+```text
+
+                                     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM  M
+                     MMMMMMMMMMMMMMMM·GO·NO-GO·GO·NO-GO·GO·NO-GO·GO·NO-GMO·M
+            MMMMMMMMMGO·NO-GO·GO·NO-GO·GO  ·NO-GO·GO·NO-GO·GO·NO-GO·GO·NOM-·
+       MMMMMGO·GO·NO-GO·GO·NO-GO·GO·NO-GO·GO·NO-GO·GO·NO-GO·GO·NO-GO·GO·NO-PM
+     MMGO·GO·NO-GO·GO·NO-GO·GO·NO-GMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMROM
+MMMMMO·GO·  NO-GO·MMMMMMMMMMMMMMMMM·MEMORY·CONTRACT·GVARDRAILS·MEMORY·CONTROF·M
+GO·NO-GO·MMMMMMMMMACT·GVARDRAILS·MEMORY      ·CONTRACT·GVARDRAILS·MEMORY·COPROMM
+GO·NOMMMMNTRACT·GVARDRAILS·MEMORY·CONT        RACT·GVARDRAILS·MEMORY·CONTRAOF·PRM
+MMMMMCT·G    VARDRAILS·MEMORY·CONTRAC          T·GVARDRAILS·MEMORY·CONTRACTOOF·PRO
+·GVARDRAI     LS·MEMORY·CONTRACT·GVAR          DRAILS·MEMORY·CONTRACT·GVARDOF·PROOM
+RAILS·ME      MORY·CONTRACT·GVMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMF·PROOF·PMMMMMMMMMMM
+ARDRAILS    MMMMMMMMMMMMMMMMMM·VAVLT·PROTOTYPE·GREY-ZONES·CONTRACT·BVILD·DOROOF·PROOF·PROOF·PROMMMMMMMMMMMMMMMMMM
+·MEMOMMMMMMMNE·VAVLT·PROTOTYPE·GREY-ZONES·CONTRACT·BVILD·DONE·VAVLT·PROTOTYOF·PROOF·PROOF·PROOF·PROOF·PROOF·PROOFMMMMMMM
+MMMMMPE·GREY-ZONES·CONTRACT·BVILD·DONE·      VAVLT·PROTOTYPE·GREY-ZONES·CON·PRO        OF·PROOF·PROOF·PROOF·PROOF·PROOF·MMMM
+TRACT·BVI    LD·DONE·VAVLT·PROTOTYPE·G        REY-ZONES·CONTRACT·BVILD·DONEP              ROOF·PROOF·PROOF·PROOF    ·PROOF·P
+·VAVLT·P      ROTOTYPE·GREY-ZONES·CON          TRACT·BVILD·DONE·VAVLT·PROTO                ROOF·PROOF·PROOF·PR        OOF·PR
+TYPE·GRE      Y-ZONES·CONTRACT·BVILD·          DONE·VAVLT·PROTOTYPE·GREY-ZO                OOF·PROOF·PROOF·PRO        OF·PRO
+NES·CONT      RACT·BMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMOF·PR        OOF·PR
+VILD·MMMMMMMMMMMMMMM·MAINSTAY·MAINSTAY·MAINSTAY·MAINSTAY·MAINSTAY·MAINSTAY·OOF·PROOF·PROOF·PROOF·PROOF·PRMMMMMMMMMMMMMMMOOF·
+MMMMMMAINSTAY·MAINSTAY·MAINSTAY·MAINST        AY·MAINSTAY·MAINSTAY·MAINSTAYPROOF·PROOF·PROOF·PROOF·PROOF·PROOF·PROOF·PROMMMM
+·MAINSTAY    ·MAINSTAY·MAINSTAY·MAI              NSTAY·MAINSTAY·MAINSTAY·MAOF·PROOF·PROOF·PROOF·PROOF·PROOF·PROOF·PROOF·PROO
+INSTAY·        MAINSTAY·MAINSTAY·M                AINSTAY·MAINSTAY·MAINSTAYF·PR        OOF·PROOF·PROOF·PROOF·PRO    OF·PROOF
+·MAINST        AY·MAINSTAY·MAINSTA                Y·MAINSTAY·MAINSTAY·MAINS·              PROOF·PROOF·PROOF·PR        OOF·PR
+TAY·MAI        NSTAY·MAINSTAY·MAIN                STAY·MAINSTAY·MAINSTAY·MA                OOF·PROOF·PROOF·PRO        OF·PRO
+INSTAY·        MAINSTAY·MAINSTAY·M                AINSTAY·MAINSTAY·MAINSTAY                OF·PROOF·PROOF·PROO        F·PROO
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+           S                              R                                       P                              E
+```
+
+Le Colisée, dessiné en rien d'autre que des lettres latines — parce que la
+maçonnerie **est** la méthode. Les verdicts à l'attique (`GO·NO-GO`), les trois
+piliers à l'étage, la chaîne de livraison dans le corps, `MAINSTAY` aux
+fondations — et derrière la brèche, l'anneau intérieur est bâti d'un seul mot :
+`PROOF`. Les quatre portes sont les quatre [profils](docs/fr/profiles/) :
+**S**olo compressé, **R**un & audit, **P**roduit en construction, équip**E** &
+flotte. Entrez par la vôtre. (Le U est gravé V, à la romaine. La ruine est
+délibérée : un système vivant porte ses brèches consignées, pas une façade
+intacte.)
 
 ---
 
