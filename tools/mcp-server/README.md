@@ -1,8 +1,13 @@
 # Example MCP server
 
+> **Deprecated (2026-08).** Never adopted in the field across three months of
+> practice — the field *consumes* MCP servers, it does not write them. Kept for
+> reference; not maintained. See the field verdict in
+> [`docs/en/core/03-agent-architecture.md`](../../docs/en/core/03-agent-architecture.md).
+
 A minimal, runnable MCP server. It is a teaching artifact for the **access
 layer** of the Mainstay agentic architecture — see
-[`docs/en/03-agent-architecture.md`](../../docs/en/03-agent-architecture.md).
+[`docs/en/core/03-agent-architecture.md`](../../docs/en/core/03-agent-architecture.md).
 
 ## What an MCP server is, in Mainstay's architecture
 
