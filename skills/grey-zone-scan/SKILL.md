@@ -12,14 +12,14 @@ description: >-
 A grey zone is anything in the build that the agent settled by itself because
 neither the prototype brief nor the contract specified it: an empty state filled
 its way, an invented hover, an arbitrary sort order, an unapproved error
-message, an assumed permission. It is neither a bug nor a correct answer — it is
+message, an assumed permission. It is neither a bug nor a correct answer: it is
 an unauthorised default decision. This skill finds them, all of them, before
 they reach integration.
 
 ## When to run this
 
 - Right after a prototype is generated from a creation prompt.
-- After **every** iteration pass on that prototype — each pass creates new grey
+- After **every** iteration pass on that prototype: each pass creates new grey
   zones, so each pass needs its own scan.
 - Before a contract is frozen.
 
@@ -32,7 +32,7 @@ question: *did the reference specify this explicitly?*
 - **Yes** → move on.
 - **No** → it is a grey zone. Record it.
 
-The sweep is systematic — zone by zone, state by state, interaction by
+The sweep is systematic: zone by zone, state by state, interaction by
 interaction. Do not eyeball it. Walk the checklist.
 
 ## Steps
@@ -41,7 +41,7 @@ interaction. Do not eyeball it. Walk the checklist.
    - The contract or brief file (the reference).
    - A short prototype-notes file: a plain-text description of what the
      generated build actually shows and does, observed directly (run it, look
-     at it — do not describe from memory).
+     at it; do not describe from memory).
 
 2. **Scaffold the ledger.** Run the helper script to create a grey-zone ledger
    pre-populated with the checklist sweep:
@@ -61,17 +61,17 @@ interaction. Do not eyeball it. Walk the checklist.
 4. **Record every grey zone.** For each element the reference did **not**
    specify, add a row to the ledger table:
    - a sequential id (`GZ-01`, `GZ-02`, ...),
-   - the observable element (concrete — what you saw),
+   - the observable element (concrete: what you saw),
    - "In contract?" = `no` (only `no` rows belong in the ledger),
    - the chosen outcome (see below),
    - a decision link or `n/a`,
    - status `open` until resolved.
 
 5. **Resolve each grey zone.** Every grey zone gets exactly one of **two**
-   outcomes — never a third:
-   - **`decision`** — a formal `DEC-XXX` note in the vault, dated and
+   outcomes, never a third:
+   - **`decision`**: a formal `DEC-XXX` note in the vault, dated and
      justified, when the stake is broad or sets a rule.
-   - **`contract`** — a noted, documented decision recorded inline in the
+   - **`contract`**: a noted, documented decision recorded inline in the
      contract, when the stake is local to this screen.
 
    You never write "decide later". Fifteen open grey zones are fifteen bombs
@@ -89,6 +89,6 @@ for the ledger format.
 
 ## Files in this skill
 
-- `SKILL.md` — this file.
-- `scan.sh` — scaffolds a grey-zone ledger from the checklist. Run `--help`.
-- `checklist.md` — the sweep checklist to walk during the scan.
+- `SKILL.md`: this file.
+- `scan.sh`: scaffolds a grey-zone ledger from the checklist. Run `--help`.
+- `checklist.md`: the sweep checklist to walk during the scan.

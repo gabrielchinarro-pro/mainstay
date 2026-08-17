@@ -1,20 +1,20 @@
 # Hooks
 
 A hook is a deterministic trigger attached to an event in the agent's or the
-repository's lifecycle. A hook does not ask the model anything — it runs. That
+repository's lifecycle. A hook does not ask the model anything: it runs. That
 is what turns a good practice into a guarantee, and what creates the
 **self-correction loop**: the agent edits, the hook tests, the failure returns
 to the agent, the agent fixes it.
 
 Every script here is POSIX `bash`, starts with `#!/usr/bin/env bash` and
 `set -euo pipefail`, carries a header comment stating its trigger event and how
-to wire it, and degrades gracefully — none of them hard-crash a clean checkout.
+to wire it, and degrades gracefully: none of them hard-crash a clean checkout.
 
 ## The hooks in this directory
 
 Each hook carries its field status (as of 2026-08). One has been adopted and
 adapted on a real project; the other three are prescriptive designs with no
-field copy to show for them — usable, but unproven.
+field copy to show for them: usable, but unproven.
 
 | Hook | Trigger event | What it does | Field status |
 |---|---|---|---|
@@ -39,12 +39,12 @@ and a failure comes back as an actionable message.
 
 ## How to install them
 
-### Option A — Git hooks (works for any repository)
+### Option A: Git hooks (works for any repository)
 
 Git looks for hooks in `.git/hooks/`. Point Git at this directory, or symlink
 individual scripts.
 
-Point Git at a tracked hooks directory (recommended — the hooks travel with the
+Point Git at a tracked hooks directory (recommended: the hooks travel with the
 repo):
 
 ```sh
@@ -55,7 +55,7 @@ With `core.hooksPath` set, Git runs a file named exactly after the event. The
 script names here do not match Git's event names, so add thin dispatchers:
 
 ```sh
-# hooks/pre-commit  — tracked, tiny, calls the real hooks
+# hooks/pre-commit: tracked, tiny, calls the real hooks
 #!/usr/bin/env bash
 set -euo pipefail
 DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -72,7 +72,7 @@ ln -sf ../../hooks/pre-commit-tests.sh   .git/hooks/pre-commit
 (Only one script can be symlinked per Git event; use a dispatcher when you need
 several, as with `pre-commit` above.)
 
-### Option B — Agent hook config
+### Option B: Agent hook config
 
 If your agent runtime supports lifecycle hooks, register each script against
 its event:
@@ -102,7 +102,7 @@ Run any script with `--help` for its specifics.
 
 ## See also
 
-- `../skills/contract-lint/` — `pre-commit-tests.sh` can call the contract
+- `../skills/contract-lint/`: `pre-commit-tests.sh` can call the contract
   linter as one of its checks.
-- `../skills/grey-zone-scan/` — `grey-zone-reminder.sh` points back to this
+- `../skills/grey-zone-scan/`: `grey-zone-reminder.sh` points back to this
   skill.

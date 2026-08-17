@@ -6,11 +6,11 @@
   pixels everything they cannot show: endpoints, permissions, error states,
   transitions, rules, test data. It is the source of truth for behaviour.
 
-  A contract is frozen only with TWO signatures — product and engineering.
+  A contract is frozen only with TWO signatures: product and engineering.
   Without both, it stays a draft. The double signature kills the trap of
   "approved by UX, found unbuildable by engineering two weeks later".
 
-  The frontmatter keys below are English and machine-read — do not translate or
+  The frontmatter keys below are English and machine-read; do not translate or
   rename them. `status` is a fixed vocabulary: draft | review | frozen |
   obsolete. Run ../skills/contract-lint/ before you freeze.
 
@@ -23,11 +23,11 @@ version: "0.1"                   # bump on every material change after freeze
 status: draft                    # draft | review | frozen | obsolete
 signed_product: false            # true only when product has signed
 signed_engineering: false        # true only when engineering has signed
-frozen_on: null                  # YYYY-MM-DD — set when status becomes frozen
+frozen_on: null                  # YYYY-MM-DD; set when status becomes frozen
 related_decisions: []            # e.g. [DEC-007, DEC-011]
 ---
 
-# Contract — <Screen Name>
+# Contract · <Screen Name>
 
 <!-- One-line summary of what this screen is. -->
 <One sentence describing the screen.>
@@ -48,15 +48,15 @@ related_decisions: []            # e.g. [DEC-007, DEC-011]
 - **Note:** for anything visible (layout, copy, states), the prototype wins.
   This contract governs behaviour, not pixels.
 
-## 3. Architecture — fixed vs conditional zones
+## 3. Architecture: fixed vs conditional zones
 
 <!-- Separate the regions that are always present from the regions that appear
      under a condition. This split prevents an agent from treating a conditional
      region as permanent, or vice versa. -->
 - **Fixed zones** (always rendered):
-  - <zone> — <what it contains>.
+  - <zone>: <what it contains>.
 - **Conditional zones** (rendered only when a condition holds):
-  - <zone> — shown when <condition>.
+  - <zone>: shown when <condition>.
 
 ## 4. States and transitions
 
@@ -71,10 +71,10 @@ related_decisions: []            # e.g. [DEC-007, DEC-011]
 | Error | <exact error copy> | load fails | Loading (on retry) |
 | <partial state> | <description> | <...> | <...> |
 
-## 5. Components — exact copy and validations
+## 5. Components: exact copy and validations
 
 <!-- Each interactive component: its exact copy strings, its validation rules,
-     its disabled/enabled conditions. Copy is quoted verbatim — no paraphrase. -->
+     its disabled/enabled conditions. Copy is quoted verbatim: no paraphrase. -->
 - **<Component name>**
   - Copy: `"<exact label / placeholder / helper text>"`.
   - Validation: <rule, e.g. "required, 1-60 characters, trimmed">.
@@ -99,7 +99,7 @@ Base URL: `https://api.example.com`
   ```json
   { "<field>": "<type / example>" }
   ```
-- **Error responses:** `<code>` — <when and what payload>.
+- **Error responses:** `<code>`: <when and what payload>.
 - **Test data:** <a concrete request/response pair an agent can use>.
 
 <!-- Repeat the block above for each endpoint. -->
@@ -107,7 +107,7 @@ Base URL: `https://api.example.com`
 ## 7. Edge cases
 
 <!-- The awkward situations. Each one: the situation and the required behaviour.
-     If the prototype did not show it, it MUST be decided here — not left open. -->
+     If the prototype did not show it, it MUST be decided here, not left open. -->
 - <Edge case> → <required behaviour>.
 - <Edge case> → <required behaviour>.
 
@@ -123,7 +123,7 @@ Base URL: `https://api.example.com`
 
 <!-- The domain logic that is not visible in the UI. Ordering, defaults,
      uniqueness, computed values, side effects. One rule per line, testable. -->
-- <Rule — e.g. "only one item per user may be marked as default">.
+- <Rule, e.g. "only one item per user may be marked as default">.
 - <Rule>.
 
 ## 10. Test data
@@ -153,8 +153,8 @@ Base URL: `https://api.example.com`
 <!-- The contract is frozen ONLY when both boxes are ticked, status is `frozen`,
      frozen_on is set, and signed_product / signed_engineering are true in the
      frontmatter. One signature is not enough. -->
-- [ ] **Product** — signed by <name/role>, on <YYYY-MM-DD>.
-- [ ] **Engineering** — signed by <name/role>, on <YYYY-MM-DD>.
+- [ ] **Product**: signed by <name/role>, on <YYYY-MM-DD>.
+- [ ] **Engineering**: signed by <name/role>, on <YYYY-MM-DD>.
 
 <!--
   BEFORE FREEZING:

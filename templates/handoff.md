@@ -3,7 +3,7 @@
   COPY TO: vault/handoffs/<YYYY-MM-DD>-<topic>.md
 
   A handoff is the committed artifact a session writes before it ends, so the
-  next session (you, tomorrow — or another agent, in an hour) starts with the
+  next session (you, tomorrow, or another agent, in an hour) starts with the
   truth instead of a guess. It is the written half of the pair; the inline
   half is the resume prompt (see resume-prompt.md), which is derived from it.
 
@@ -12,7 +12,7 @@
       command that measured it and what it returned. "The tests pass" is a
       belief; "npm test → 42 passed at 17:50" is a fact.
    2. AN EXPIRY BANNER. A handoff describes a moment. Past its expiry
-      condition, it is a trap — the banner says so before anything else.
+      condition, it is a trap; the banner says so before anything else.
    3. A FIRST ACTION. The next session does not choose where to start; the
       handoff imposes it. Choosing is where a fresh session goes wrong.
 
@@ -20,11 +20,11 @@
   Fill every <PLACEHOLDER>. Delete these comments.
 -->
 
-> ⚠️ **EXPIRY** — this handoff describes the state as measured on
+> ⚠️ **EXPIRY**: this handoff describes the state as measured on
 > <YYYY-MM-DD HH:MM>. It expires on <date>, or at the first commit after
 > `<short-sha>`, whichever comes first. After that: re-measure, do not trust.
 
-# Handoff — <worksite, e.g. saved-views-panel, wiring wave 2>
+# Handoff · <worksite, e.g. saved-views-panel, wiring wave 2>
 
 ## 1. Measured state
 
@@ -40,26 +40,26 @@
 
 ## 2. Locked decisions
 
-<!-- Decisions the next session must not reopen. Reference, do not restate —
+<!-- Decisions the next session must not reopen. Reference, do not restate:
      a paraphrase of a decision is how decisions drift. -->
-- DEC-007 — exactly one default view per user. Do not reopen.
-- DEC-011 — new views are private until shared. Do not reopen.
-- <decision> — <one line>, see <link>.
+- DEC-007: exactly one default view per user. Do not reopen.
+- DEC-011: new views are private until shared. Do not reopen.
+- <decision>: <one line>, see <link>.
 
 ## 3. Known traps
 
 <!-- What this session learned the hard way. Each trap: the symptom, the
      cause, what to do instead. This section is why handoffs exist. -->
-- <Symptom observed> — caused by <cause>. Do <the right move> instead.
+- <Symptom observed>: caused by <cause>. Do <the right move> instead.
 - The mock for `set-default` returns 200 on a nonexistent id; the real
   endpoint returns 404. Do not trust the mock's happy path on this call.
 
-## 4. Not done — and known to be not done
+## 4. Not done, and known to be not done
 
 <!-- The honest remainder. Listing it here is what prevents the next session
      from "discovering" it and treating it as a regression. -->
 - Wave 2 wiring (2 endpoints).
-- Error-state copy for the delete confirmation — waiting on <who/what>.
+- Error-state copy for the delete confirmation: waiting on <who/what>.
 
 ## 5. First action for the next session
 

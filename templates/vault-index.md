@@ -4,7 +4,7 @@
 
   The vault is the navigable mirror over the code: decisions, screen contracts,
   business concepts, the design system, and the links between them. It never
-  contradicts the code — on technical facts, the code wins. The vault is the
+  contradicts the code; on technical facts, the code wins. The vault is the
   layer of meaning on top of the layer of truth.
 
   This index is the entry point. An agent reads it to orient itself inside the
@@ -14,11 +14,11 @@
   Fill every <PLACEHOLDER>. Delete these comments.
 -->
 
-# Vault Index — <PROJECT_NAME>
+# Vault Index · <PROJECT_NAME>
 
 The vault is the navigable mirror of this repository's knowledge. It holds the
 decisions, screen contracts, concepts, and design system. It does not hold
-technical truth — for the data schema, types, and routes, read the code.
+technical truth: for the data schema, types, and routes, read the code.
 
 Start here, then follow the links below.
 
@@ -31,7 +31,7 @@ Start here, then follow the links below.
 | `concepts/` | business concept notes | shared domain vocabulary |
 | `design-system/` | tokens, components, patterns | visual conventions |
 
-For technical facts — table shapes, types, routes — see
+For technical facts (table shapes, types, routes), see
 `apps/backend/docs/database/` and the code itself, not the vault.
 
 ## Decisions
@@ -55,15 +55,15 @@ For technical facts — table shapes, types, routes — see
 ## Concepts
 
 <!-- The domain vocabulary. Link each concept note. -->
-- [<Concept name>](./concepts/<concept>.md) — <one-line gloss>.
+- [<Concept name>](./concepts/<concept>.md): <one-line gloss>.
 - <...>
 
 ## Design system
 
 <!-- Pointers into the design-system folder. -->
-- [Tokens](./design-system/tokens.md) — colours, typography, spacing, radii.
-- [Components](./design-system/components.md) — the reusable component catalogue.
-- [Patterns](./design-system/patterns.md) — layout and interaction patterns.
+- [Tokens](./design-system/tokens.md): colours, typography, spacing, radii.
+- [Components](./design-system/components.md): the reusable component catalogue.
+- [Patterns](./design-system/patterns.md): layout and interaction patterns.
 
 ## Conventions for the vault itself
 
