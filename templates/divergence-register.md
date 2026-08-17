@@ -3,7 +3,7 @@
   COPY TO: DIVERGENCES.md at the root of the rebuild worksite
            (or vault/DIVERGENCES.md).
 
-  Use this register when you rebuild AGAINST A FROZEN REFERENCE — an
+  Use this register when you rebuild AGAINST A FROZEN REFERENCE: an
   existing site to re-implement, a legacy screen to reproduce, a design pack
   that must be matched. It is the twin of the grey-zone ledger, but the two
   are not interchangeable:
@@ -14,31 +14,31 @@
      reference that already exists and is frozen. Its register lives for
      the whole rebuild.
 
-  One consequence matters: in this register — and only here — a DATED
+  One consequence matters: in this register, and only here, a DATED
   DEFERRAL is a legitimate status. The grey-zone rule "there is no third
   outcome" protects contracts from "we'll decide later"; a rebuild, by
   contrast, may knowingly ship with a divergence scheduled for later,
   provided the deferral carries a date, an owner, and a review trigger.
-  A deferral without all three is not a status — it is an open divergence
+  A deferral without all three is not a status: it is an open divergence
   wearing a costume.
 
   Statuses (fixed vocabulary):
-   - assumed       — divergence kept on purpose, justified in writing.
-   - fixed         — rebuild brought back to the reference, re-measured.
-   - to-arbitrate  — awaiting a decision from someone with authority.
-   - deferred      — dated deferral: date + owner + review trigger.
+   - assumed       · divergence kept on purpose, justified in writing.
+   - fixed         · rebuild brought back to the reference, re-measured.
+   - to-arbitrate  · awaiting a decision from someone with authority.
+   - deferred      · dated deferral: date + owner + review trigger.
 
   All example content is fictional. Fill every <PLACEHOLDER>. Delete these
   comments.
 -->
 
-# Divergence Register — <rebuild id>
+# Divergence Register · <rebuild id>
 
-- **Frozen reference:** <what the rebuild is measured against — e.g. the
+- **Frozen reference:** <what the rebuild is measured against, e.g. the
   reference capture pack `ref-captures/2026-05-01/`, checksummed; or the
   live legacy site pinned at <version/date>>.
 - **Rebuild under measure:** <build / commit / URL being compared>.
-- **How divergences are measured:** <the method — e.g. side-by-side
+- **How divergences are measured:** <the method, e.g. side-by-side
   captures at 3 viewports, DOM text diff, replayed interaction scripts.
   Divergences are MEASURED, not remembered.>
 
@@ -56,7 +56,7 @@
 <!-- The before/after evidence for anything claimed fixed, replayed under
      the same conditions both times. A "fixed" row with no measure here is
      not fixed. -->
-- DIV-02 — comparison script: <N> mismatching regions before, 0 after,
+- DIV-02 · comparison script: <N> mismatching regions before, 0 after,
   same viewport set, same capture tool, runs of <date> and <date>.
 - <measure>.
 
@@ -64,15 +64,15 @@
 
 <!-- Dated entries: arbitrations rendered, deferrals reviewed at their
      trigger, statuses changed. Statuses change here first, then in the
-     table — never silently in the table alone. -->
-- <date> — DIV-03 arbitrated by <who>: keep full text → status `fixed`
+     table; never silently in the table alone. -->
+- <date> · DIV-03 arbitrated by <who>: keep full text → status `fixed`
   once re-measured.
-- <date> — DIV-04 deferral reviewed at trigger: <outcome>.
+- <date> · DIV-04 deferral reviewed at trigger: <outcome>.
 
 <!--
   RULES:
    - Every known difference gets a row, including the flattering ones.
-   - `assumed` requires a written justification and a name — "looks fine"
+   - `assumed` requires a written justification and a name; "looks fine"
      is not a justification.
    - `deferred` rows are re-reviewed at their trigger, not at leisure; a
      lapsed date flips the row to `to-arbitrate` automatically.

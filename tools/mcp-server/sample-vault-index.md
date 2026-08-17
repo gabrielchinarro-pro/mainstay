@@ -8,13 +8,13 @@ the surrounding vault tree.
 
 ## Decisions
 
-- `decisions/DEC-007.md` — Default saved view: per-user
-- `decisions/DEC-011.md` — Saved view visibility: private by default
+- `decisions/DEC-007.md` · Default saved view: per-user
+- `decisions/DEC-011.md` · Saved view visibility: private by default
 
 ## Contracts
 
-- `contracts/saved-views-panel.md` — status: frozen
+- `contracts/saved-views-panel.md` · status: frozen
 
 ## Concepts
 
-- `concepts/saved-views.md` — the Saved Views business concept
+- `concepts/saved-views.md` · the Saved Views business concept

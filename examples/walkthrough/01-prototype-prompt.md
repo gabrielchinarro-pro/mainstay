@@ -6,11 +6,11 @@ based_on: CON-saved-views
 created_on: 2026-05-11
 ---
 
-# Prototype generation prompt — `saved-views-panel`
+# Prototype generation prompt · `saved-views-panel`
 
 > Step 1 of the delivery chain: the prototype comes out of a **single
 > generation**. If the screen needs a second prompt to be usable, the brief
-> below was vague — the iteration count measures the quality of this prompt,
+> below was vague: the iteration count measures the quality of this prompt,
 > not the agent. This is the prompt, reproduced verbatim, that produced the
 > validated prototype the grey-zone scan ([`02`](./02-grey-zone-scan.md)) then
 > examined.
@@ -29,10 +29,10 @@ visible columns, can be marked default, and can be private or shared with
 the workspace.
 
 DO 3 PASSES
-  Pass 1 — Structure: lay out every zone and every state as static markup.
-  Pass 2 — Implementation: wire interactions, list rendering, the create
+  Pass 1 · Structure: lay out every zone and every state as static markup.
+  Pass 2 · Implementation: wire interactions, list rendering, the create
            and edit forms, all states below.
-  Pass 3 — Polish and responsive: spacing, focus order, empty/loading/error
+  Pass 3 · Polish and responsive: spacing, focus order, empty/loading/error
            visuals; verify at 360px, 768px and 1280px widths.
 
 SPECIFICATIONS
@@ -69,7 +69,7 @@ VALUES
 - Separator 1px. Border radius 8px on the panel, 4px on inputs/buttons.
 - Badge: 11px text, 2px/6px padding, 4px radius.
 
-DESIGN SYSTEM RECALL  (never assume — restate)
+DESIGN SYSTEM RECALL  (never assume; restate)
 - Primary action color: the design-system "accent" token.
 - Text: primary token for names, muted token for secondary text.
 - Typography: the system sans; sizes used here are 11/13/14/16px.
@@ -79,7 +79,7 @@ DESIGN SYSTEM RECALL  (never assume — restate)
 
 PROHIBITIONS
 - Do not invent copy. Use exactly the strings given above. If a string is
-  needed and not given, leave a visible TODO marker — do not guess.
+  needed and not given, leave a visible TODO marker; do not guess.
 - Do not invent behaviour for cases not specified (see self-check).
 - Do not add features beyond this brief (no search, no folders, no
   drag-to-reorder).
@@ -105,7 +105,7 @@ SELF-CHECK CHECKLIST  (tick every item before returning)
 - **Passes** force a structured generation instead of one undisciplined dump.
 - **Specifications with numbers** (320px, 44px, 1px) leave no room to
   reinterpret layout.
-- **Design-system recall** prevents invented colors and components — the most
+- **Design-system recall** prevents invented colors and components, the most
   common source of grey zones.
 - **Prohibitions** name what *not* to do, explicitly.
 - **Self-check** makes the agent verify its own output before returning.

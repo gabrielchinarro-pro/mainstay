@@ -15,11 +15,11 @@
 ## Mainstay checklist
 
 - [ ] If this changes meaning in `docs/en/`, the matching `docs/fr/` file is updated in the same PR (English is the reference language).
-- [ ] No real names, companies, secrets, tokens, or internal URLs — placeholders only.
+- [ ] No real names, companies, secrets, tokens, or internal URLs; placeholders only.
 - [ ] Every code example is minimal and runs; shell scripts pass `bash -n`.
 - [ ] Internal links are relative and resolve.
 - [ ] Terminology matches `docs/en/17-glossary.md`.
-- [ ] No filler — every paragraph teaches something.
+- [ ] No filler: every paragraph teaches something.
 
 ## Notes for reviewers
 

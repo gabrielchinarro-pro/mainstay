@@ -1,13 +1,13 @@
 # spec-to-mocks
 
 > **Deprecated (2026-08).** Never adopted in the field across three months of
-> practice — kept for reference; not maintained. The contract-first idea it
+> practice: kept for reference; not maintained. The contract-first idea it
 > illustrates lives on in
 > [`docs/en/core/04-delivery-chain.md`](../../docs/en/core/04-delivery-chain.md).
 
 Generate TypeScript types, a typed endpoints list, and JSON mock fixtures from
 an OpenAPI 3 spec. This is the **contract-first toolchain** of the Mainstay
-delivery chain — see
+delivery chain; see
 [`docs/en/core/04-delivery-chain.md`](../../docs/en/core/04-delivery-chain.md),
 step 4.
 
@@ -21,11 +21,11 @@ contract. The trick that makes this possible:
 2. **Derive, don't wait.** The front does not wait for the back. It generates
    TypeScript types and JSON mock fixtures *from the spec* and builds against
    those.
-3. **Wire in waves.** When a real endpoint ships, it replaces its mock — one
+3. **Wire in waves.** When a real endpoint ships, it replaces its mock, one
    endpoint at a time, verifiable, never a risky big-bang integration.
 
 This tool automates step 2. Run it once the spec is frozen; re-run it whenever
-the spec changes. The generated files are disposable build artifacts — they
+the spec changes. The generated files are disposable build artifacts: they
 are never edited by hand.
 
 ## What it produces
@@ -81,9 +81,9 @@ produced by exactly this command.
 
 | Flag | Required | Default | Meaning |
 |---|---|---|---|
-| `--spec <file>` | yes | — | Path to the OpenAPI 3 YAML spec. |
+| `--spec <file>` | yes | none | Path to the OpenAPI 3 YAML spec. |
 | `--out <dir>` | no | `./generated` | Output directory (created if missing). |
-| `--help`, `-h` | no | — | Print usage and exit. |
+| `--help`, `-h` | no | none | Print usage and exit. |
 
 ## Exit codes
 

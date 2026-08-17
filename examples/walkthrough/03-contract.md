@@ -9,10 +9,10 @@ frozen_on: 2026-05-18
 related_decisions: [DEC-007, DEC-011]
 ---
 
-# Contract — `saved-views-panel`
+# Contract · `saved-views-panel`
 
 > Step 3 of the delivery chain. The validated prototype becomes a signable
-> **contract**: it adds to the pixels everything they cannot show — endpoints,
+> **contract**: it adds to the pixels everything they cannot show. Endpoints,
 > permissions, error states, transitions, rules, test data. Two signatures,
 > product and engineering. Without both, it is not frozen. This contract is
 > frozen and is the source of truth for the `saved-views-panel` build.
@@ -36,14 +36,14 @@ private or share it with their workspace.
 
 The validated prototype produced by
 [`01-prototype-prompt.md`](./01-prototype-prompt.md) is the visual source of
-truth. For anything that is *seen* — layout, copy, spacing, states — the
+truth. For anything that is *seen* (layout, copy, spacing, states), the
 prototype wins over this contract and over the code.
 
 The validated prototype is archived under
 `vault/design-system/prototypes/saved-views-panel/` and was generated from
 [`01-prototype-prompt.md`](./01-prototype-prompt.md).
 
-## 3. Architecture — fixed vs conditional zones
+## 3. Architecture: fixed vs conditional zones
 
 | Zone | Type | Description |
 |---|---|---|
@@ -107,11 +107,11 @@ All copy below is frozen. Use it verbatim; do not invent strings.
 | Empty state | `No saved views yet` |
 | Error state | `Could not load saved views.` + link `Retry` |
 | Loading state | 3 skeleton rows |
-| Form — Name field | Label `Name`, text input, `maxlength=60`, required |
-| Form — visibility | Radio pair: `Private` (pre-selected, DEC-011) / `Shared with workspace` |
-| Form — buttons | `Cancel`, `Save` |
-| Form — name blank error | `Enter a name.` |
-| Form — duplicate name error | `A view with this name already exists.` |
+| Form · Name field | Label `Name`, text input, `maxlength=60`, required |
+| Form · visibility | Radio pair: `Private` (pre-selected, DEC-011) / `Shared with workspace` |
+| Form · buttons | `Cancel`, `Save` |
+| Form · name blank error | `Enter a name.` |
+| Form · duplicate name error | `A view with this name already exists.` |
 | Delete confirmation | Inline prompt `Delete this view?` + `Confirm` / `Cancel` |
 
 Layout values (frozen): panel width 320px; row height 44px; padding 12px;
@@ -125,15 +125,15 @@ Base URL: `https://api.example.com`. Auth: every request carries
 [`04-api-spec.yaml`](./04-api-spec.yaml). Schemas and mocks:
 [`05-mocks/`](./05-mocks/).
 
-### 6.1 `GET /v1/saved-views` — list visible views
+### 6.1 `GET /v1/saved-views` · list visible views
 
 - **Request:** no body.
-- **Response 200:** `SavedViewList` — `{ items: SavedView[], total: number }`.
+- **Response 200:** `SavedViewList` (`{ items: SavedView[], total: number }`).
   Returns the caller's private views plus all workspace-shared views, sorted
   by `name` ascending. `is_default` is resolved for the calling user (DEC-007).
 - **Response 401:** `Error` with `code: "unauthorized"`.
 
-### 6.2 `POST /v1/saved-views` — create a view
+### 6.2 `POST /v1/saved-views` · create a view
 
 - **Request body:** `SavedViewCreate`:
   ```json
@@ -150,32 +150,32 @@ Base URL: `https://api.example.com`. Auth: every request carries
   `visibility` is optional; omitted means `private` (DEC-011). A created view
   is never `is_default: true`.
 - **Response 201:** `SavedView`.
-- **Response 400:** `Error` with `code: "validation_failed"` — blank name,
+- **Response 400:** `Error` with `code: "validation_failed"`: blank name,
   name over 60 chars, or a name that duplicates one of the caller's views.
 - **Response 401:** `Error` with `code: "unauthorized"`.
 
-### 6.3 `GET /v1/saved-views/{id}` — read one view
+### 6.3 `GET /v1/saved-views/{id}` · read one view
 
 - **Response 200:** `SavedView`.
-- **Response 404:** `Error` with `code: "not_found"` — id unknown or not
+- **Response 404:** `Error` with `code: "not_found"`: id unknown or not
   visible to the caller.
 
-### 6.4 `PATCH /v1/saved-views/{id}` — update name / config / visibility
+### 6.4 `PATCH /v1/saved-views/{id}` · update name / config / visibility
 
 - **Request body:** `SavedViewCreate`. The `is_default` field is not accepted
-  here — use §6.6.
+  here; use §6.6.
 - **Response 200:** `SavedView`.
 - **Response 400:** `Error` `validation_failed`.
-- **Response 403:** `Error` `forbidden` — caller is not the owner (DEC-011).
+- **Response 403:** `Error` `forbidden`: caller is not the owner (DEC-011).
 - **Response 404:** `Error` `not_found`.
 
-### 6.5 `DELETE /v1/saved-views/{id}` — delete a view
+### 6.5 `DELETE /v1/saved-views/{id}` · delete a view
 
 - **Response 204:** no body.
-- **Response 403:** `Error` `forbidden` — caller is not the owner.
+- **Response 403:** `Error` `forbidden`: caller is not the owner.
 - **Response 404:** `Error` `not_found`.
 
-### 6.6 `POST /v1/saved-views/{id}/default` — set as caller's default
+### 6.6 `POST /v1/saved-views/{id}/default` · set as caller's default
 
 - **Request:** no body.
 - **Response 200:** `SavedView` with `is_default: true`. Per DEC-007 this is a
@@ -187,7 +187,7 @@ Base URL: `https://api.example.com`. Auth: every request carries
 
 | Code | Meaning | `Error.code` |
 |---|---|---|
-| 200 / 201 / 204 | Success | — |
+| 200 / 201 / 204 | Success | none |
 | 400 | Validation failed | `validation_failed` |
 | 401 | Missing/invalid auth | `unauthorized` |
 | 403 | Not the owner | `forbidden` |
@@ -218,14 +218,14 @@ Base URL: `https://api.example.com`. Auth: every request carries
 | Delete | Yes | No (403) | No (404) |
 
 A private view is invisible to non-owners, so a non-owner request against one
-returns `404`, not `403` — its existence is not disclosed.
+returns `404`, not `403`: its existence is not disclosed.
 
 ## 9. Business rules
 
 1. **Unique names per user.** A view's `name` is unique within its owner's
    views, case-insensitive. A duplicate is rejected with `validation_failed`.
    (Grey-zone scan row 5.)
-2. **Name length.** 1–60 characters after trimming whitespace.
+2. **Name length.** 1-60 characters after trimming whitespace.
 3. **Private by default.** A created view is `private` unless `visibility` is
    explicitly `workspace` (DEC-011).
 4. **Per-user default.** At most one default view per user. Setting a new one
@@ -300,9 +300,9 @@ Two fixture views for development and acceptance, both consistent with
 
 ## 12. Signatures
 
-- [x] **Product** — signed 2026-05-18. Copy, states, and visibility model
+- [x] **Product**: signed 2026-05-18. Copy, states, and visibility model
       reviewed against the concept note and DEC-007 / DEC-011.
-- [x] **Engineering** — signed 2026-05-18. Endpoints, permissions, and the
+- [x] **Engineering**: signed 2026-05-18. Endpoints, permissions, and the
       per-user default model reviewed as feasible against the frozen API spec.
 
 Both signatures present: this contract is **frozen** as of `2026-05-18`.

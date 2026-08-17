@@ -5,23 +5,23 @@ prototype_reviewed: 2026-05-12
 brief: 01-prototype-prompt.md
 ---
 
-# Grey-zone scan — `saved-views-panel`
+# Grey-zone scan · `saved-views-panel`
 
 > Step 2 of the delivery chain. A **grey zone** is anything the agent decided
 > on its own because neither the prototype prompt nor the concept note told it
-> what to do. Not a bug, not a right answer — a choice made by default, in the
+> what to do. Not a bug, not a right answer: a choice made by default, in the
 > shadows, by something without the authority to make it.
 >
 > The protocol: compare the validated prototype to the brief, item by item,
-> state by state. For every observable element, one question — *did the brief
+> state by state. For every observable element, one question: *did the brief
 > ask for this explicitly?* Yes: pass. No: it is a grey zone, and it gets one
 > of exactly two outcomes.
 
 ## The two outcomes (never a third)
 
-- **Formal decision** — the stakes are cross-cutting; it becomes a dated,
+- **Formal decision**: the stakes are cross-cutting; it becomes a dated,
   justified `DEC-XXX` in the vault and a reusable rule.
-- **Contract note** — the stakes are local; it is recorded as an explicit
+- **Contract note**: the stakes are local; it is recorded as an explicit
   line in the screen contract and nowhere else.
 
 "We'll decide later" is not an outcome. Fifteen unresolved grey zones are
@@ -38,12 +38,12 @@ fifteen bombs that detonate together at integration.
 | GZ-05 | The prototype allowed two views with the **same name**. | The concept says names "should not collide confusingly" but sets no rule. | **Contract note** | Recorded in the contract, §9 Business rules: view names are unique per user, case-insensitive; a duplicate is rejected with code `validation_failed`. |
 | GZ-06 | On Delete, the prototype removed the row **with no confirmation**. | The brief's menu lists "Delete" but says nothing about a confirmation step. | **Contract note** | Recorded in the contract, §7 Edge cases: Delete asks for an inline confirmation ("Delete this view?") before the request is sent. |
 | GZ-07 | Deleting the **current default view** left the screen with no default and no message. | Neither brief nor concept covers what happens to "default" when the default view is deleted. | **Contract note** | Recorded in the contract, §9 Business rules: deleting the default view simply clears the user's default; next open shows the raw table (consistent with DEC-007). |
-| GZ-08 | The empty-state copy "No saved views yet" was rendered for both **loading-finished-empty** and a **failed load** before the error state was wired. | Transient — the error state was specified; this was a pass-1 artifact. | **No action** | Not a grey zone: the brief specifies a distinct error state; pass 3 wired it. Logged for traceability only. |
+| GZ-08 | The empty-state copy "No saved views yet" was rendered for both **loading-finished-empty** and a **failed load** before the error state was wired. | Transient: the error state was specified; this was a pass-1 artifact. | **No action** | Not a grey zone: the brief specifies a distinct error state; pass 3 wired it. Logged for traceability only. |
 
 ## Roll-up
 
 - **2 formal decisions** raised: DEC-007 (rows GZ-01, GZ-02) and DEC-011 (rows GZ-03, GZ-04).
-- **3 contract notes** raised: rows GZ-05, GZ-06, GZ-07 — folded into
+- **3 contract notes** raised: rows GZ-05, GZ-06, GZ-07, folded into
   [`03-contract.md`](./03-contract.md) §7 and §9.
 - **1 non-issue** (row GZ-08), logged and closed.
 
