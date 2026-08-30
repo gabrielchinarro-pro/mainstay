@@ -136,7 +136,7 @@ Un dépôt unique hébergeant code et connaissance, partageant historique et rev
 
 ### Passe sèche
 
-Une passe de revue complète qui ne produit aucun défaut majeur confirmé. La règle d'arrêt de la revue adversariale : la boucle n'est close qu'après **deux passes sèches consécutives** ; une seule peut être un coup de chance ou une passe paresseuse. Voir [La revue adversariale](../core/07-adversarial-review.md).
+Une passe de revue complète qui ne produit aucun défaut majeur confirmé. La règle d'arrêt de la revue adversariale : la boucle est close après **une passe sèche confirmée par une passe à angles neufs** ; une sèche isolée peut être un coup de chance ou une passe paresseuse, et une confirmation jouée en rejeu ne prouve rien. Voir [La revue adversariale](../core/07-adversarial-review.md).
 
 ### Prompt de reprise
 
@@ -228,7 +228,7 @@ La méthode appliquée à du code qu'on ne possède pas : lecture seule absolue 
 
 ### Verdict (GO · NO-GO · GO-SOUS-CONDITIONS)
 
-Le lexique canonique des verdicts de revue, tranché ici. **GO** : aucun majeur confirmé. **NO-GO** : au moins un majeur confirmé ; retour au producteur. **GO-SOUS-CONDITIONS** : des réserves nommées, chacune datée et portée par quelqu'un ; une condition sans échéance ni porteur requalifie le verdict en NO-GO. S'y ajoutent deux verdicts d'état : le **gel honnête** (boucle non convergente, gel écrit) et la clôture sur **deux passes sèches**. Tout autre lexique de verdicts (feux tricolores, GREEN/PENDING/RED) n'appartient pas au canon. Voir [La revue adversariale](../core/07-adversarial-review.md).
+Le lexique canonique des verdicts de revue, tranché ici. **GO** : aucun majeur confirmé. **NO-GO** : au moins un majeur confirmé ; retour au producteur. **GO-SOUS-CONDITIONS** : des réserves nommées, chacune datée et portée par quelqu'un ; une condition sans échéance ni porteur requalifie le verdict en NO-GO. S'y ajoutent deux verdicts d'état : le **gel honnête** (boucle non convergente, gel écrit) et la clôture sur **passe sèche confirmée à angles neufs**. Tout autre lexique de verdicts (feux tricolores, GREEN/PENDING/RED) n'appartient pas au canon. Voir [La revue adversariale](../core/07-adversarial-review.md).
 
 ### Worktree
 

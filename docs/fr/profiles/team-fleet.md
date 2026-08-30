@@ -20,7 +20,7 @@ Quand l'erreur peut coûter de l'argent réel, une obligation réglementaire ou 
 2. **Double signature produit + technique, puis gel dans `SIGNED/` avec attestation.** À cette échelle, la signature en frontmatter ne suffit plus : les signataires ne sont pas dans la même conversation, l'attestation matérialise l'engagement ([chapitre 04](../core/04-delivery-chain.md)).
 3. **Le durcissement adverse précède l'écriture.** Avant de rédiger un contrat ou d'exécuter un plan structurant, le projet de document passe sa propre passe adversariale : faits porteurs re-vérifiés contre le code réel, verdict gradué ([chapitre 07](../core/07-adversarial-review.md)).
 4. **Le doublement adverse 1:1 du codeur, sur le diff non commité.** Chaque agent codeur est doublé d'un adversaire qui relit le diff avant commit et peut le refuser. C'est le mécanisme qui a attrapé, sur ce terrain, quatre défauts que trois passes de recette produit avaient laissés passer.
-5. **La recette par rounds, arrêt sur deux passes sèches consécutives.** Un round sans majeur confirmé ne clôt rien ; deux de suite, si ([chapitre 07](../core/07-adversarial-review.md)).
+5. **La recette par rounds, arrêt sur passe sèche + confirmation à angles neufs.** Un round sans majeur confirmé ne clôt rien ; il faut qu'un regard neuf, sur des angles jamais ouverts, le confirme ([chapitre 07](../core/07-adversarial-review.md), règle d'arrêt révisée).
 6. **Numérotation continue avec registre central, et arbitrage écrit des collisions.** Quand plusieurs sessions créent des décisions en parallèle, deux `DEC-043` finissent par naître ; le registre central attribue les numéros, et la collision qui survient malgré tout se résout par une décision, pas par un renommage silencieux ([chapitre 02](../core/02-vault-and-sources-of-truth.md)).
 7. **Isolation worktree + port par session ; PR vault séparées des PR code ; jamais de push sans go.** Chaque session parallèle a son worktree et son port ; la connaissance et le code voyagent dans des PR distinctes, relues par des yeux différents.
 8. **Le séquencement de vague, quand un stock de branches s'accumule.** Des dizaines de branches prêtes ne se fusionnent pas en vrac ; une chaîne de rôles ordonne la vague : qui vérifie quoi, dans quel ordre, avec quel critère de passage ([référence · orchestration](../reference/orchestration.md)).
@@ -102,7 +102,7 @@ Une fintech (protocole de production en huit étapes, exécuté pour la premièr
 - [Chapitre 02 · Le vault et les sources de vérité](../core/02-vault-and-sources-of-truth.md) : numérotation continue, garde-fous sous sessions parallèles
 - [Chapitre 04 · La chaîne de livraison](../core/04-delivery-chain.md) : la double signature, la variante contrat-sans-prototype
 - [Chapitre 06 · Le prompt comme contrat](../core/06-prompt-as-contract.md) : le mega-prompt orchestrateur à gate de sortie
-- [Chapitre 07 · La revue adversariale](../core/07-adversarial-review.md) : doublement 1:1, durcissement adverse, deux passes sèches
+- [Chapitre 07 · La revue adversariale](../core/07-adversarial-review.md) : doublement 1:1, durcissement adverse, règle d'arrêt passe sèche + angles neufs
 - [Chapitre 09 · La gate de mise en production et le registre](../core/09-release-gate-and-registry.md) : le go verbatim
 - [Chapitre 10 · La conduite de session](../core/10-session-conduct.md) : handoffs datés, état mesuré
 - [Référence · Orchestration](../reference/orchestration.md) : worktrees, flotte, vagues

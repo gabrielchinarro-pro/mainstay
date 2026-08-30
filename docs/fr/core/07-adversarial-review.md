@@ -74,6 +74,11 @@ Un compte de findings est une métrique de vanité dans les deux sens. Trop haut
 
 La contre-vérification s'applique à l'adversaire lui-même. Sur un cockpit interne d'agence, un lot revu par un adversaire unique a été escaladé vers un panel élargi de 16 agents : le panel a trouvé **6 majeurs que l'adversaire unique avait manqués**, et **rétrogradé 3 faux-majeurs** que ce même adversaire avait gonflés. La leçon vaut règle : un verdict adversarial est une mesure, et une mesure se contre-vérifie : en élargissant le panel quand l'enjeu le justifie, jamais en croyant l'adversaire sur parole.
 
+La contre-vérification a elle-même son dosage, mesuré par l'étude de rendement du corpus (2026-08) :
+
+- **On réfute le brut, jamais le confirmé.** La passe de réfutation s'applique à la sortie brute d'un panel, où elle élimine de l'ordre d'un finding sur trois. Re-soumettre à une contre-passe des findings déjà confirmés par une recette complète ne rend presque rien : une seule réfutation pour quarante-huit findings ré-audités sur le corpus.
+- **La repro exigée à la découverte remplace la réfutation aval.** Quand chaque finding est livré avec sa reproduction au moment où il est trouvé, la contre-passe devient sans objet : le panel groupé le plus large du corpus a rendu vingt-sept findings confirmés sur vingt-sept, zéro réfuté.
+
 ## La liste brute se conserve
 
 La passe de réfutation crée une obligation d'archivage : **la liste brute des findings, y compris les écartés, se conserve à côté du verdict**, avec les justifications d'écart.
@@ -112,19 +117,31 @@ Deux frontières fermes :
 - **Un verdict de revue n'est pas un go de mise en production.** Le GO adversarial dit que le livrable tient ; la décision de le mettre devant des utilisateurs est un rituel distinct, humain et explicite (voir le [chapitre 09 : La gate de mise en production et le registre](./09-release-gate-and-registry.md)).
 - **Un verdict se prononce sur des findings réfutés, jamais sur des findings comptés.** « 24 findings » n'est ni un GO ni un NO-GO : c'est une matière première.
 
-## La règle d'arrêt : deux passes sèches consécutives
+## La règle d'arrêt : la passe sèche, puis la confirmation à angles neufs
 
 La revue adversariale boucle en rounds : passe d'attaque → réfutation → corrections → re-mesures → nouvelle passe. Il lui faut une règle d'arrêt, sinon elle se ferme au pire moment possible : celui où le relecteur fatigue, c'est-à-dire celui où il baisse la garde.
 
-La règle du terrain :
+La première moitié de la règle n'a pas bougé :
 
-> **Une passe sèche est une passe complète qui ne produit aucun majeur confirmé. La revue n'est close qu'après deux passes sèches consécutives.**
+> **Une passe sèche est une passe complète qui ne produit aucun majeur confirmé. Une seule passe sèche ne clôt rien.**
 
-Une seule passe sèche peut être un coup de chance ou une passe paresseuse ; la seconde la confirme. La clôture devient un fait mesuré (deux zéros de suite dans le journal de boucle) et non un ressenti.
+Une passe sèche isolée peut être un coup de chance ou une passe paresseuse. Le cas d'école du corpus : sur une fintech, un composant backend a été livré en diff strictement additif (17 fichiers, 1 578 insertions, **0 suppression**) avec 61 tests verts, et la revue par rounds n'a été close qu'au sixième round, sur les majeurs confirmés par round : **0, 2, 1, 2, 0, 0**. Le zéro du premier round, à lui seul, n'aurait rien clos, et la suite lui a donné raison : les rounds 2 à 4 ont trouvé cinq majeurs. Sur ce terrain, « confirmé » avait sa propre discipline : un majeur ne comptait que validé par deux réfuteurs sur trois.
 
-Le cas d'école du corpus : sur une fintech, un composant backend a été livré en diff strictement additif (17 fichiers, 1 578 insertions, **0 suppression**) avec 61 tests verts, et la revue adversariale par rounds n'a été close qu'au sixième round, sur les majeurs confirmés par round : **0, 2, 1, 2, 0, 0**. Les deux zéros finaux sont la règle d'arrêt en action ; le zéro du premier round, à lui seul, n'aurait rien clos, et la suite lui a donné raison : les rounds 2 à 4 ont trouvé cinq majeurs. Sur ce terrain, « confirmé » avait sa propre discipline : un majeur ne comptait que validé par deux réfuteurs sur trois.
+La seconde moitié a été révisée par l'étude de rendement menée sur l'ensemble du corpus (2026-08). L'ancienne règle exigeait une deuxième passe sèche consécutive ; la mesure a montré que cette deuxième passe, jouée en rejeu des mêmes contrôles, a produit **zéro finding dans la totalité des cas documentés**, et que tout ce qui a jamais été attrapé après une passe sèche l'a été par des angles jamais ouverts. Le cas le plus net : un palier front dont le code n'avait pas bougé d'un octet entre deux passes (empreintes identiques), où le relecteur a refusé le rejeu en toutes lettres (« rejouer mes propres contrôles aurait rendu une passe sèche par construction, c'est-à-dire une validation par lassitude ») et a ouvert cinq angles vierges : un majeur trouvé, dont la correction a demandé deux passes de plus pour être complète. À l'autre extrême, la règle ancienne a imposé une passe entière sur un diff à zéro ligne exécutable, uniquement parce qu'il manquait un second zéro au journal.
 
-La règle est symétrique de la [règle des zones grises](./05-grey-zones-and-divergence.md) : là-bas, on rebalaye après chaque passe parce que chaque passe crée de nouvelles zones grises ; ici, on re-attaque après chaque correction parce que chaque correction peut créer de nouveaux défauts. Dans les deux cas, l'arrêt est un critère, pas une impression.
+La règle devient donc :
+
+> **La revue est close après une passe sèche suivie d'une passe de confirmation jouée exclusivement sur des angles jamais ouverts. S'il ne reste aucun angle vierge et que l'empreinte de l'artefact n'a pas changé depuis la passe sèche, la revue se ferme sans passe supplémentaire.**
+
+La confirmation n'est pas un rejeu : c'est une attaque neuve sur un objet réputé propre. Elle conserve tout ce que l'ancienne règle protégeait, car la passe paresseuse est démasquée par un regard neuf, pas par sa propre répétition ; et elle supprime la seule passe dont le rendement mesuré était nul.
+
+Trois bornes accompagnent la règle d'arrêt :
+
+1. **Plafond de rounds.** Trois rounds corrigés par lot. Au-delà, un round supplémentaire n'est légitime que si le dispositif ou le critère d'acceptation change ; sinon, gel honnête. Le corpus porte deux boucles longues qui ne convergeaient pas (l'une a coûté environ trois millions de jetons en cinq rounds avant son gel), et son seul round tardif rentable est celui où le dispositif avait changé, pas celui où l'on avait insisté.
+2. **Retrait de lentille.** Une lentille qui rend deux rounds secs consécutifs sur son axe sort de la boucle ; son axe est couvert par la passe de confirmation finale. Sur un durcissement à trois lanes du corpus, une lane est restée sèche cinq rounds sur six : cinq passes payées, une justifiée.
+3. **Le compte qui monte reste un signal de gel.** Corriger crée des défauts : sur un lot du corpus, cinq fois sur six, le mécanisme neuf du round N a produit les majeures du round N+1. C'est précisément ce qui rend une passe post-correction obligatoire, et ce qui rend les suivantes stériles quand elles rejouent.
+
+La règle reste symétrique de la [règle des zones grises](./05-grey-zones-and-divergence.md) : là-bas, on rebalaye après chaque passe parce que chaque passe crée de nouvelles zones grises ; ici, on re-attaque après chaque correction parce que chaque correction peut créer de nouveaux défauts. Dans les deux cas, l'arrêt est un critère, pas une impression ; ce qui change est que le critère mesure désormais la nouveauté de l'attaque, pas sa répétition.
 
 ## Le gel honnête
 
@@ -149,6 +166,8 @@ Tout ce qui précède attaque du code. Le terrain a étendu le mécanisme un cra
 
 Le corpus en porte l'usage à son échelle la plus lourde : sur une fintech, une décision d'architecture structurante n'a été *rédigée* qu'après un dossier de durcissement produit par une passe multi-agents (32 agents : ancrage sur le code réel, attaque en deux lentilles, critique de complétude, double verdict) rendant **GO-SOUS-CONDITIONS**, les faits porteurs du dossier ayant été re-vérifiés un à un contre le code. La formule de terrain qui résume la discipline : *le durcissement précède l'écriture.*
 
+L'étude de rendement du corpus (2026-08) a borné la taille de ces panels. Sur un artefact documentaire, le rendement est chez les petits effectifs : deux relecteurs sur un runbook d'incident ont rendu six défauts dont deux fatals ; les panels de quatre et cinq lentilles mesurés n'ont renversé aucune décision et ont fabriqué une partie de leurs propres bloquants par leur règle d'arrêt ; et le dossier à 32 agents cité plus haut a produit en aval un plan surdimensionné qu'une contradiction de cadrage d'une page a détruit le jour même. La règle : **deux à trois contradicteurs sur un document, plus une contradiction de cadrage (« ce plan est-il trop gros ? ») avant d'exécuter tout plan issu d'un durcissement.** Le panel large reste légitime sur une surface de code étendue, et en escalade après l'échec d'un adversaire unique, là où il a fait ses preuves.
+
 La logique est la même que pour le diff non commité : attaquer au moment le moins cher. Un contrat faux coûte plus cher qu'un diff faux : tout ce qui se construit dessus hérite du défaut, et le [chapitre 06](./06-prompt-as-contract.md) a montré qu'un contrat figé fait autorité précisément parce qu'on ne le rediscute plus. Ce qui ne sera plus rediscuté doit être attaqué *avant* d'être figé. Un plan d'exécution relève de la même règle : ses affirmations porteuses (« cette branche est fusionnable », « cette donnée existe ») sont des findings en puissance, et elles se contre-vérifient avant l'exécution, pas pendant.
 
 ## Le dosage et la limite consignée
@@ -157,6 +176,8 @@ La revue adversariale a un coût réel : des rôles en plus, des rounds en plus,
 
 La limite basse existe, et le corpus la consigne au lieu de la cacher : **le chantier le plus léger du corpus a échappé entièrement à la revue adversariale** : aucune passe, aucun verdict. La méthode n'en tire pas une honte mais une règle, la même que pour toute dé-escalade : sauter la revue est un choix qui se prend par écrit, avec la raison (faible enjeu, code jetable, erreur réversible), pas une omission que l'on découvre après coup. Une revue non tenue en silence est une dette ; une revue écartée par écrit est un dosage.
 
+L'étude de rendement du corpus (2026-08) a donné à ce dosage sa loi : **le delta d'une passe dépend de la fraîcheur du regard et de la nouveauté de l'angle, jamais du nombre d'agents ni du rang du round.** La saturation mesurée est à cinq ou six lentilles distinctes par surface ; au-delà, aucun gain documenté, et des modes d'échec bien réels : agents morts en cours de session, faux vert rendu par un panel dont plus aucun agent n'était vivant. N adversaires identiques valent un adversaire. Et le meilleur rendement du corpus est le dispositif le moins large de tous : le doublement 1:1 sur le diff non commité, y compris une passe finale sur le diff assemblé après la clôture de la revue, celle qui a trouvé sur ce corpus une clé de production expédiable vers un hôte arbitraire, sous un témoin vert.
+
 ## Voir aussi
 
 - [Chapitre 03 · L'architecture agentique](./03-agent-architecture.md) · le panel de relecture read-only, couche 5
@@ -164,5 +185,5 @@ La limite basse existe, et le corpus la consigne au lieu de la cacher : **le cha
 - [Chapitre 06 · Le prompt comme contrat](./06-prompt-as-contract.md) · ce qui se fige se durcit d'abord
 - [Chapitre 08 · La preuve et les sondes](./08-proof-and-probes.md) · la mesure comme artefact
 - [Chapitre 09 · La gate de mise en production et le registre](./09-release-gate-and-registry.md) · le GO de revue n'est pas un go de production
-- [Chapitre 13 · Patterns et anti-patterns](./13-patterns-and-antipatterns.md) · patterns 10 (deux passes sèches) et 11 (gel honnête)
+- [Chapitre 13 · Patterns et anti-patterns](./13-patterns-and-antipatterns.md) · patterns 10 (passe sèche + confirmation à angles neufs) et 11 (gel honnête)
 - [Référence · Glossaire](../reference/glossary.md) · GO, NO-GO, GO-SOUS-CONDITIONS, passe sèche, gel honnête, faux positif écarté

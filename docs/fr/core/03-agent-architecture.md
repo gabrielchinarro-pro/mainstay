@@ -228,7 +228,7 @@ Le duo explorateur/éditeur reste une économie de contexte raisonnable pour les
 **Quand elle se charge :** après chaque passe de production, avant toute correction.
 **Défaillance évitée :** le producteur qui note sa propre copie, et le flot de faux positifs qui transforme une revue en bruit.
 
-Le protocole complet (rounds, verdicts gradués, règle d'arrêt des deux passes sèches, gel honnête) est au [chapitre 07 : La revue adversariale](./07-adversarial-review.md). La mécanique d'orchestration est dans la [référence Orchestration](../reference/orchestration.md).
+Le protocole complet (rounds, verdicts gradués, règle d'arrêt passe sèche + confirmation à angles neufs, gel honnête) est au [chapitre 07 : La revue adversariale](./07-adversarial-review.md). La mécanique d'orchestration est dans la [référence Orchestration](../reference/orchestration.md).
 
 ---
 

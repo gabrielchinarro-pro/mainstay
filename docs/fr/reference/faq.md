@@ -76,7 +76,7 @@ La recette produit vérifie que le livrable fait ce que le contrat demande. La r
 
 ### 18. Que sont GO, NO-GO et GO-SOUS-CONDITIONS ?
 
-Les trois verdicts canoniques d'une revue. **GO** : aucun majeur confirmé, on avance. **NO-GO** : au moins un majeur confirmé, retour au producteur, nouvelle passe après correction. **GO-SOUS-CONDITIONS** : des réserves nommées, chacune datée et portée ; une condition sans échéance ni porteur requalifie le verdict en NO-GO. Un verdict se prononce sur des findings réfutés, jamais comptés. Et la revue ne se clôt qu'après deux passes sèches consécutives. Voir [La revue adversariale](../core/07-adversarial-review.md) et le [glossaire](./glossary.md).
+Les trois verdicts canoniques d'une revue. **GO** : aucun majeur confirmé, on avance. **NO-GO** : au moins un majeur confirmé, retour au producteur, nouvelle passe après correction. **GO-SOUS-CONDITIONS** : des réserves nommées, chacune datée et portée ; une condition sans échéance ni porteur requalifie le verdict en NO-GO. Un verdict se prononce sur des findings réfutés, jamais comptés. Et la revue ne se clôt qu'après une passe sèche confirmée par une passe à angles neufs. Voir [La revue adversariale](../core/07-adversarial-review.md) et le [glossaire](./glossary.md).
 
 ### 19. Deux sources de vérité se contredisent : que fais-je ?
 
@@ -92,7 +92,7 @@ Non. Régénérer détruit du travail validé. Lisez l'artefact, trouvez la caus
 
 ### 22. Comment savoir si la méthode marche vraiment ?
 
-Par ses registres, pas par un tableau de bord. Un registre des MEP où chaque entrée porte son go, et où les violations sont consignées ; des journaux de boucle où les findings convergent vers deux passes sèches, ou vers un gel honnête ; des mesures avant/après re-jouées dans les mêmes conditions. Ce sont les preuves que le terrain tient réellement. Les sept métriques du chapitre dédié restent un [instrument proposé, non éprouvé](./metrics.md) : personne ne les a encore collectées.
+Par ses registres, pas par un tableau de bord. Un registre des MEP où chaque entrée porte son go, et où les violations sont consignées ; des journaux de boucle où les findings convergent vers la clôture sèche confirmée à angles neufs, ou vers un gel honnête ; des mesures avant/après re-jouées dans les mêmes conditions. Ce sont les preuves que le terrain tient réellement. Les sept métriques du chapitre dédié restent un [instrument proposé, non éprouvé](./metrics.md) : personne ne les a encore collectées.
 
 ### 23. La recette est validée : je peux mettre en production ?
 

@@ -53,7 +53,7 @@ décision datée.
 | 04 | [La chaîne de livraison](./core/04-delivery-chain.md) | Étapes 0-6. L'interdit « rien n'est construit tant que le contrat n'est pas figé ». Les variantes contrat-sans-proto et design greffé. |
 | 05 | [Zones grises et divergence](./core/05-grey-zones-and-divergence.md) | Le protocole de détection. Les deux issues. Le registre d'écarts comme artefact jumeau. Le compteur de résolution. |
 | 06 | [Le prompt comme contrat](./core/06-prompt-as-contract.md) | Anatomie d'un prompt. Chirurgical vs refonte. Le prompt de reprise et le mega-prompt orchestrateur. Mandat d'initiative et posture. |
-| 07 | [La revue adversariale](./core/07-adversarial-review.md) | Rôles, contre-vérification des findings, triage des faux positifs, règle des deux passes sèches, gel honnête. |
+| 07 | [La revue adversariale](./core/07-adversarial-review.md) | Rôles, contre-vérification des findings, triage des faux positifs, règle d'arrêt passe sèche + confirmation à angles neufs, gel honnête. |
 | 08 | [La preuve et les sondes](./core/08-proof-and-probes.md) | Sondes sur le vrai chemin de code, dossiers de preuve numérotés, preuve rejouée post-MEP, audit de fidélité des mocks. |
 | 09 | [La gate de MEP et le registre](./core/09-release-gate-and-registry.md) | Go humain explicite au tour courant. Le registre des MEP. La réconciliation registre↔réel. La dé-escalade écrite. |
 | 10 | [La conduite de session](./core/10-session-conduct.md) | Handoffs datés, « état mesuré, pas déduit », péremption explicite, titres à préfixe d'état, fiches mémoire. |

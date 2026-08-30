@@ -112,11 +112,11 @@ flowchart LR
 
 **Comment.** Calque la vérif sur le vrai consommateur : connecte-toi comme l'app, requête comme un navigateur. Quand le proxy et la réalité divergent, le vrai consommateur fait foi ; et un feu vert de proxy n'est pas une preuve verte (pattern 5).
 
-### Pattern 10 : La règle d'arrêt « deux passes sèches » *(terrain)*
+### Pattern 10 : La règle d'arrêt « passe sèche, puis confirmation à angles neufs » *(terrain)*
 
-**Quoi.** Une boucle de relecture ne se ferme ni à la fatigue, ni à l'intuition que « ça a l'air bon » : elle se ferme quand **deux passes complètes consécutives ne produisent plus aucun finding nouveau**. Une passe sans finding est une *passe sèche* ; il en faut deux d'affilée.
+**Quoi.** Une boucle de relecture ne se ferme ni à la fatigue, ni à l'intuition que « ça a l'air bon » : elle se ferme quand une passe complète ne produit plus aucun majeur confirmé (la *passe sèche*), confirmée par une passe jouée exclusivement sur des angles jamais ouverts. S'il ne reste aucun angle vierge et que l'artefact n'a pas changé d'empreinte, la boucle se ferme sur la sèche seule.
 
-**Pourquoi ça marche.** Un critère d'arrêt subjectif sélectionne exactement le moment où le relecteur baisse la garde, c'est-à-dire le pire moment pour s'arrêter. Une seule passe sèche peut être un coup de chance ou une passe paresseuse ; la seconde la confirme. La fermeture devient un fait mesuré, pas un ressenti. Terrain : une fintech du corpus a clos un palier après six rounds de relecture, la clôture prononcée sur deux passes sèches consécutives.
+**Pourquoi ça marche.** Un critère d'arrêt subjectif sélectionne exactement le moment où le relecteur baisse la garde, c'est-à-dire le pire moment pour s'arrêter. Une seule passe sèche peut être un coup de chance ou une passe paresseuse ; c'est un regard neuf qui la confirme, pas sa propre répétition : sur le corpus, la passe de confirmation jouée en rejeu n'a jamais rien produit, quand des passes à angles neufs ont trouvé jusqu'au huitième rang. La fermeture reste un fait mesuré, pas un ressenti. Terrain : une fintech du corpus a clos un palier après six rounds de relecture, les rounds 2 à 4 ayant trouvé cinq majeurs après un premier round à zéro.
 
 **Comment.** Comptez les findings nouveaux par passe, dans le journal de boucle. Tant que le compte n'est pas à zéro deux fois de suite, la boucle continue, ou se gèle honnêtement (pattern 11). Le protocole complet est au [chapitre 07 : La revue adversariale](./07-adversarial-review.md).
 
@@ -253,7 +253,7 @@ Utilisez ceci comme auto-audit rapide en fin de fonctionnalité.
 | Escaladé les manques au lieu de rapiécer le code ? | P7 |
 | Réconcilié contre la source live (pas le snapshot) avant le cutover ? | P8 |
 | Vérifié par le vrai consommateur quand un check contredit la réalité ? | P9 |
-| Fermé la boucle de relecture sur deux passes sèches, pas sur la fatigue ? | P10 / A9 |
+| Fermé la boucle de relecture sur passe sèche + confirmation à angles neufs, pas sur la fatigue ? | P10 / A9 |
 | Gelé par écrit quand la convergence ne venait pas ? | P11 / A9 |
 | Marqué le périmé d'un bandeau daté au lieu de le réécrire ? | P12 |
 | Réconcilié chaque registre avec l'état réel qu'il décrit ? | P13 / A10 |
